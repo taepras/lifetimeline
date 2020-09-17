@@ -1,5 +1,5 @@
 const YEARS_OFFSET = 5;
-const SPACE_PER_YEAR = 70;
+const SPACE_PER_YEAR = 90;
 const SPACE_PER_EVENT = 75;
 const YEAR_BE_OFFSET = 543;
 const YEAR_ANIMATION_DELAY = 50;
@@ -326,6 +326,31 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
             .append('g')
             .attr('class', 'event')
             .attr('transform', (d, i) => `translate(0, ${i * SPACE_PER_EVENT})`)
+        
+        var defs = eventGroupEnter.append('svg:defs');
+
+        let R = 30;
+        defs.append('svg:pattern')
+            .attr('id', d => `image_id_${d.image.replaceAll(/( |\.)/g, '_')}`)
+            .attr("width", d => 2 * R)
+            .attr("height", d => 2 * R)
+            .attr("x", d => -R)
+            .attr("y", d => -R)
+            .attr("patternUnits", "userSpaceOnUse")
+            .append("svg:image")
+            // FIXME get album art once the api has been fixed
+            .attr("xlink:href", d => '/img/events/' + d.image)
+            .attr("width", d => 2 * R)
+            .attr("height", d => 2 * R);
+
+        // eventGroupEnter.append('defs')
+        //     .append('pattern')
+        //     .append('pattern')
+            // <defs>
+            //     <pattern id="image05evePUsIT1cmIURp1hgu6" patternUnits="userSpaceOnUse" width="6.5490453156328865" height="6.5490453156328865" x="-3.2745226578164432" y="-3.2745226578164432">
+            //         <image xlink:href="https://i.scdn.co/image/ab67616d0000485122ca59e5c2d806439d5f08a2" width="6.5490453156328865" height="6.5490453156328865"></image>
+            //     </pattern>
+            // </defs>
 
         let eventBubbleG = eventGroupEnter.append('g')
             .attr('class', 'event-bubble')
@@ -343,9 +368,10 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
             .attr('cx', 0)
             .attr('cy', 0)
             .attr('r', d => scaleR(d.importance))
-            .attr('fill', '#fff')
-        
-        eventBubbleG.append('foreignObject')
+            // .attr('fill', '#fff')
+            .style('fill', d => `url(#image_id_${d.image.replaceAll(/( |\.)/g, '_')})`)
+            
+            eventBubbleG.append('foreignObject')
             .attr('x', d => scaleR(d.importance) + 5)
             .attr('y', -50)
             .attr('width', 120)
@@ -372,6 +398,7 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
         moreBadgeEnter.append('circle')
             .attr('r', 10)
             .attr('fill', '#ccc')
+            
         // moreBadgeEnter.append('text')
         //     .attr('class', 'svg-text-center')
         //     .attr('fill', '#fff')
@@ -390,7 +417,7 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
         svg.selectAll('.more-badge');
 
     console.log(IMPORTANCE_CUTOFF);
-    let BADGE_OFFSET = 20;
+    let BADGE_OFFSET = 25;
     moreBadge
         .attr('transform', d => `translate(0, ${Math.max(countShownEvents(d) * SPACE_PER_EVENT - BADGE_OFFSET, 0)})`)
         .attr('opacity', d => (countHiddenEvents(d) > 0) ? 1 : 0)
