@@ -370,11 +370,11 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
         moreBadgeEnter.append('path')
             .attr('class', 'bubble-link-path')
         moreBadgeEnter.append('circle')
-            .attr('r', 15)
-            .attr('fill', '#f00')
-        moreBadgeEnter.append('text')
-            .attr('class', 'svg-text-center')
-            .attr('fill', '#fff')
+            .attr('r', 10)
+            .attr('fill', '#ccc')
+        // moreBadgeEnter.append('text')
+        //     .attr('class', 'svg-text-center')
+        //     .attr('fill', '#fff')
     }
 
     let eventGroup = eventGroupEnter  ? 
@@ -390,7 +390,7 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
         svg.selectAll('.more-badge');
 
     console.log(IMPORTANCE_CUTOFF);
-    let BADGE_OFFSET = 45;
+    let BADGE_OFFSET = 20;
     moreBadge
         .attr('transform', d => `translate(0, ${Math.max(countShownEvents(d) * SPACE_PER_EVENT - BADGE_OFFSET, 0)})`)
         .attr('opacity', d => (countHiddenEvents(d) > 0) ? 1 : 0)
@@ -405,8 +405,8 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
                 L ${0}, ${0}
             `
         })
-        .attr('opacity', d => countShownEvents(d) == 0 ? 1 : 0)
-    moreBadge.select('text').text(d => `+${countHiddenEvents(d)}`)
+        // .attr('opacity', d => countShownEvents(d) == 0 ? 1 : 0)
+    // moreBadge.select('text').text(d => `+${countHiddenEvents(d)}`)
 
     eventYearGroup.attr('transform', d => `translate(${X_ANCHOR}, ${transformedScaleY(d.year)})`);
     
