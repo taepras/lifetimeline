@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เด็กสมัยโน้น</title>
+    <link rel="stylesheet" href="https://use.typekit.net/lvd7ldq.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <title>มองโลกผ่านสายตายุคสมัย</title> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="cover-page">
+        <div class="container container-cover">
+            <h1 class="title">เด็กสมัย<u>ไหน</u>?</h1>
+            <p>จำได้ไหมว่าเราโตมากับอะไร? มาลองทบทวนกันว่าชีวิตเราผ่านเหตุการณ์ประวัติศาสตร์อะไรมาบ้าง และลองมองประวัติศาสตร์ ผ่านสายตาของคนต่างวัย ต่างยุคสมัย</p>
+            <p>ฉันเกิดปี</p>
+            <input type="number" id="year-input" value="1995" class="form-control mb-2">
+            <button type="button" id="button-start" class="btn btn-danger btn-block">Go</button>
+        </div>
+    </div>
+    <div id="topbar">
+        <button id="year-change-toggle">เปลี่ยนปีเกิด</button>
+    </div>
+    <div id="footer">
+        Share - <a href="#" id="year-type-be" class="mode-link">พ.ศ.</a> | <a href="#" id="year-type-ad" class="mode-link">ค.ศ.</a>
+    </div>
+    <div id="app">
+        <div id="timeline">
+            <div id="timeline-fill"></div>
+        </div>
+        <svg id="events"></svg>
+        <svg id="life"></svg>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
