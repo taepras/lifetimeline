@@ -1,5 +1,6 @@
 const YEARS_OFFSET = 5;
 const SPACE_PER_YEAR = 70;
+const SPACE_PER_EVENT = 75;
 const YEAR_BE_OFFSET = 543;
 const YEAR_ANIMATION_DELAY = 50;
 const ANIMATION_START_DELAY = 1500;
@@ -11,19 +12,20 @@ let BIRTH_YEAR = 1995;
 const CURRENT_YEAR = 2020;
 
 let LEFT_SPACE = 150;
+let LEFT_SPACE_SAFE = LEFT_SPACE + 25;
+let X_ANCHOR = 220;
 let IMPORTANCE_CUTOFF = 1;
 
-let X_ANCHOR = 210;
 
 let events, life, celebrities;
 
 let scaleY, scaleR, transformedScaleY;
-let simulation;
+// let simulation;
 let currentTransform = d3.zoomIdentity;
 let tempTransform = currentTransform;
 let lastDy = 0, startDy = 0, lastYCenter = 0;
 
-const ZOOM_EXTENT = [1, 5];
+const ZOOM_EXTENT = [1, 4];
 
 
 const eventTemplate = Handlebars.compile(document.getElementById('hb-template-event').innerHTML);
@@ -130,6 +132,11 @@ Promise.all([
             year: d.key,
             events: d.values
         }));
+
+    eventsNested.forEach(d => {
+        console.log(d)
+        d.events.sort((x, y) => x.importance - y.importance)
+    })
         // .rollup(d => d)
 
     for (let i in eventsNested) {
@@ -154,9 +161,9 @@ Promise.all([
         .range([0, ((yearExtent[1] - yearExtent[0]) + 2 * YEARS_OFFSET) * SPACE_PER_YEAR]);
     transformedScaleY = d3.zoomIdentity.rescaleY(scaleY);
 
-    scaleR = d3.scalePow(4)
-        .domain([1, 2, 3, 4, 5])
-        .range([30, 23, 15, 10, 8]);
+    scaleR = d3.scaleLinear()
+        .domain([1, 5])
+        .range([30, 30]);
 
     // console.log(yearRange);
 
@@ -175,7 +182,7 @@ Promise.all([
         .append('option')
         .attr('value', d => d)
         .attr('selected', d => {
-            console.log(d, BIRTH_YEAR)
+            // console.log(d, BIRTH_YEAR)
             return d == '' + BIRTH_YEAR ? 'selected' : null;
         })
         .text(d => d)
@@ -183,21 +190,21 @@ Promise.all([
     svg.style('height', scaleY(+yearExtent[1] + YEARS_OFFSET) + 'px')
     
     
-    simulation = d3.forceSimulation(events)
-        .force('collision', d3.forceCollide())
-        .force('x', d3.forceX())
-        .force('y', d3.forceY())
-        .alphaDecay(.0005)
-        .velocityDecay(0.6)
-        .on("tick", function tick(e) {
-            svg.selectAll('g.event-bubble')
-            .attr('transform', function (d) {
-                d.fy = isZooming ? transformedScaleY(d.year) : undefined;
-                return  `translate(${d.x}, ${d.y})`;
-            }); 
-        });
+    // simulation = d3.forceSimulation(events)
+    //     .force('collision', d3.forceCollide())
+    //     .force('x', d3.forceX())
+    //     .force('y', d3.forceY())
+    //     .alphaDecay(.0005)
+    //     .velocityDecay(0.6)
+    //     .on("tick", function tick(e) {
+    //         svg.selectAll('g.event-bubble')
+    //         .attr('transform', function (d) {
+    //             d.fy = isZooming ? transformedScaleY(d.year) : undefined;
+    //             return  `translate(${d.x}, ${d.y})`;
+    //         }); 
+    //     });
     
-    updateTimeline(svg, events);
+    updateTimeline(svg, eventsNested);
     
 
     // EVENTS
@@ -258,10 +265,10 @@ Promise.all([
 })
 
 
-function updateTimeline (svg, events) {
-    IMPORTANCE_CUTOFF = Math.floor(currentTransform.k + 0.5);
+function updateTimeline (svg, eventsNested) {
+    IMPORTANCE_CUTOFF = Math.floor(currentTransform.k / 0.8 + 0.5);
     updateYearScale(svg);
-    updateEvents(svg, events);
+    updateEvents(svg, eventsNested);
 }
 
 
@@ -293,24 +300,44 @@ function updateYearScale (svg, transform = d3.zoomIdentity) {
         // console.log(svg, yearGroup);
 }
 
-function updateEvents (svg, events = [], transform = d3.zoomIdentity) {
+function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
     // let transformedScaleY = transform.rescaleY(scaleY);
     
-    let eventGroupEnter;
-    if (events.length > 0) {
+    let eventYearGroupEnter = null;
+    let eventGroupEnter = null;
+    let moreBadgeEnter = null;
 
-        eventGroupEnter = svg.selectAll('.event')
-            .data(events)
+    // eventsNested.forEach(d => {
+    //     d.hiddenCount = d.events.filter(x => x.importance > IMPORTANCE_CUTOFF).length;
+    // });
+
+    if (eventsNested.length > 0) {
+
+        eventYearGroupEnter = svg.selectAll('.event-year-group')
+            .data(eventsNested)
             .enter()
-            .each(function (d) {
-                d.x = X_ANCHOR;
-                d.y = scaleY(d.year);
-            })
+            .append('g')
+            .attr('class', 'event-year-group')
+            // .attr('transform', d => `translate(${X_ANCHOR}, ${transformedScaleY(d.year)})`);
+    
+        eventGroupEnter = eventYearGroupEnter.selectAll('.event')
+            .data(d => d.events)
+            .enter()
             .append('g')
             .attr('class', 'event')
-    
+            .attr('transform', (d, i) => `translate(0, ${i * SPACE_PER_EVENT})`)
+
         let eventBubbleG = eventGroupEnter.append('g')
             .attr('class', 'event-bubble')
+
+        eventBubbleG.append('path')
+            .attr('class', 'bubble-link-path')
+            .attr('d', (d, i) => `
+                M ${LEFT_SPACE_SAFE - X_ANCHOR}, ${-i * SPACE_PER_EVENT}
+                L ${((LEFT_SPACE_SAFE - X_ANCHOR) - scaleR(d.importance)) / 2}, ${-i * SPACE_PER_EVENT}
+                L ${((LEFT_SPACE_SAFE - X_ANCHOR) - scaleR(d.importance)) / 2}, ${0}
+                L ${0}, ${0}
+            `)
 
         eventBubbleG.append('circle')
             .attr('cx', 0)
@@ -337,31 +364,73 @@ function updateEvents (svg, events = [], transform = d3.zoomIdentity) {
         // .attr('x2', X_ANCHOR)
         // .attr('y2', d => scaleY(d.year))
         // .attr('stroke', '#fff6');
+
+        moreBadgeEnter = eventYearGroupEnter.append('g')
+            .attr('class', 'more-badge')
+        moreBadgeEnter.append('path')
+            .attr('class', 'bubble-link-path')
+        moreBadgeEnter.append('circle')
+            .attr('r', 15)
+            .attr('fill', '#f00')
+        moreBadgeEnter.append('text')
+            .attr('class', 'svg-text-center')
+            .attr('fill', '#fff')
     }
 
-    let eventGroup = events.length > 0 ? 
-        d3.selectAll('.event')
-            .merge(eventGroupEnter) :
-        d3.selectAll('.event');
+    let eventGroup = eventGroupEnter  ? 
+        eventGroupEnter.merge(svg.selectAll('.event')) : 
+        svg.selectAll('.event');
 
+    let eventYearGroup = eventYearGroupEnter ? 
+        eventYearGroupEnter.merge(svg.selectAll('.event-year-group')) : 
+        svg.selectAll('.event-year-group');
+
+    let moreBadge = moreBadgeEnter ? 
+        moreBadgeEnter.merge(svg.selectAll('.more-badge')) : 
+        svg.selectAll('.more-badge');
+
+    console.log(IMPORTANCE_CUTOFF);
+    let BADGE_OFFSET = 45;
+    moreBadge
+        .attr('transform', d => `translate(0, ${Math.max(countShownEvents(d) * SPACE_PER_EVENT - BADGE_OFFSET, 0)})`)
+        .attr('opacity', d => (countHiddenEvents(d) > 0) ? 1 : 0)
+    moreBadge.select('path')
+        .attr('d', function (d) {
+            let yOffset = -(countShownEvents(d) * SPACE_PER_EVENT - BADGE_OFFSET);
+            yOffset = Math.min(yOffset, 0);
+            return `
+                M ${LEFT_SPACE_SAFE - X_ANCHOR}, ${yOffset}
+                L ${((LEFT_SPACE_SAFE - X_ANCHOR) - 30) / 2}, ${yOffset}
+                L ${((LEFT_SPACE_SAFE - X_ANCHOR) - 30) / 2}, ${0}
+                L ${0}, ${0}
+            `
+        })
+        .attr('opacity', d => countShownEvents(d) == 0 ? 1 : 0)
+    moreBadge.select('text').text(d => `+${countHiddenEvents(d)}`)
+
+    eventYearGroup.attr('transform', d => `translate(${X_ANCHOR}, ${transformedScaleY(d.year)})`);
+    
+    // console.log(eventGroup, eventGroupEnter, svg.selectAll('.event'));
+    // eventGroup.each(d => { console.log(d.importance, IMPORTANCE_CUTOFF) });
     eventGroup.filter(d => d.importance > IMPORTANCE_CUTOFF)
         .attr('opacity', '0');
     eventGroup.filter(d => d.importance <= IMPORTANCE_CUTOFF)
         .attr('opacity', '1');
+        
     
-    eventGroup.selectAll('g.event-bubble')
-        .attr('transform', d => `translate(${LEFT_SPACE}, ${transformedScaleY(d.year)})`);
+    // eventGroup.selectAll('g.event-bubble')
+        
     
-    if (simulation) {
-        simulation.force('x').x(X_ANCHOR).strength(0.15);
-        simulation.force('y').y(d => transformedScaleY(d.year)).strength(0.1);
-        simulation.force('collision').radius(d => {
-            if (d.importance > IMPORTANCE_CUTOFF)
-                return 0;
-            else 
-                return scaleR(d.importance) + 5;
-        });
-    }
+    // if (simulation) {
+    //     simulation.force('x').x(X_ANCHOR).strength(0.15);
+    //     simulation.force('y').y(d => transformedScaleY(d.year)).strength(0.1);
+    //     simulation.force('collision').radius(d => {
+    //         if (d.importance > IMPORTANCE_CUTOFF)
+    //             return 0;
+    //         else 
+    //             return scaleR(d.importance) + 5;
+    //     });
+    // }
 }
 
 // function updateEvents (selection, data, yearExtent) {
@@ -438,7 +507,7 @@ function onScroll () {
         d3.select('.life-status .image').style('background-image', '');
     } else {
         for (let i in life) {
-            console.log(+life[i].age, currentAge)
+            // console.log(+life[i].age, currentAge)
             if (+life[i].age > currentAge) {
                 d3.select('.life-status .stage').text(life[i - 1].event);
                 d3.select('.life-status .image').style('background-image', `url(/img/life/${life[i - 1].image})`);
@@ -480,3 +549,12 @@ function wrap(text, width, x) {
     });
   }
 
+
+
+function countHiddenEvents (d) {
+    return d.events.filter(x => x.importance > IMPORTANCE_CUTOFF).length
+}
+
+function countShownEvents (d) {
+    return d.events.filter(x => x.importance <= IMPORTANCE_CUTOFF).length
+}

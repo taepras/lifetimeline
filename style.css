@@ -312,3 +312,13 @@ a.mode-link.active {
 .event-title {
     font-size: 16pt;
 }
+
+.bubble-link-path {
+    fill: none;
+    stroke: #888;
+}
+
+.svg-text-center {
+    alignment-baseline: middle;
+    text-anchor: middle;
+}
