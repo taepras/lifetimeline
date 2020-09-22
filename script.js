@@ -9,11 +9,13 @@ const ANIMATION_START_DELAY = 1500;
 const SCROLL_OFFSET = 250;
 
 let BIRTH_YEAR = 1995;
-const CURRENT_YEAR = 2020;
+// const CURRENT_YEAR = 2020;
 
 let LEFT_SPACE = 150;
-let LEFT_SPACE_SAFE = LEFT_SPACE + 25;
+let YEAR_SPACE_PADDING = 25;
+// let LEFT_SPACE + YEAR_SPACE_PADDING = LEFT_SPACE + YEAR_SPACE_PADDING;
 let X_ANCHOR = 220;
+let X_ANCHOR_LEFT = 80;
 let IMPORTANCE_CUTOFF = 1;
 
 
@@ -87,7 +89,7 @@ Promise.all([
             
             // zoomed(currentTransform, scrollTargetY);
             transformedScaleY = currentTransform.rescaleY(scaleY);
-            updateTimeline(svg, []);
+            updateTimeline(svg, [], [], yearRange);
         }
         tempTouches = e.touches;
     });
@@ -103,7 +105,7 @@ Promise.all([
             svg.style('height', transformedScaleY(2020 + YEARS_OFFSET) + 'px')
             window.scrollTo(0, newScrollY);
 
-            updateTimeline(svg, []);
+            updateTimeline(svg, [], [], yearRange);
 
             setTimeout(function () {
                 isZooming = false;
@@ -112,17 +114,6 @@ Promise.all([
         tempTouches = e.touches;
     });
 
-    // var zoom = d3.zoom()
-    //     .scaleExtent([1, 5])
-    //     // .on("zoom", zoomed)
-    //     .on('zoom', function (t) {
-    //         // When 1 finger, do not zoom
-    //         if (touchCount === 1) {
-    //             // d3.event.stopPropagation();
-    //             return;
-    //         }
-    //         zoomed(t);    
-    //     })
 
     // preprocessing
     var eventsNested = d3.nest()
@@ -133,8 +124,16 @@ Promise.all([
             events: d.values
         }));
 
+    var celebsNested = d3.nest()
+        .key(d => d.year)
+        .entries(celebrities)
+        .map(d => ({
+            year: d.key,
+            celebs: d.values
+        }));
+
     eventsNested.forEach(d => {
-        console.log(d)
+        // console.log(d)
         d.events.sort((x, y) => x.importance - y.importance)
     })
         // .rollup(d => d)
@@ -167,9 +166,11 @@ Promise.all([
 
     // console.log(yearRange);
 
-    let yearRange = d3.range(yearExtent[0], yearExtent[1]);
+    let yearRange = d3.range(yearExtent[0], +yearExtent[1] + 1);
 
-    // // main timeline
+    // Utils.startTypingEffect(d3.select('#typewriting').node());
+
+    // main timeline
     
     let appDiv = d3.select('#app');
     let eventsDiv = d3.select('#events');
@@ -177,43 +178,38 @@ Promise.all([
 
     d3.select('#year-select')
         .selectAll('option')
-        .data(yearRange)
+        .data(yearRange.reverse())
         .enter()
         .append('option')
         .attr('value', d => d)
+        .text(d => `ค.ศ. ${d} / พ.ศ. ${d + 543}`)
         .attr('selected', d => {
             // console.log(d, BIRTH_YEAR)
             return d == '' + BIRTH_YEAR ? 'selected' : null;
         })
-        .text(d => d)
+        // .text(d => d)
     
     svg.style('height', scaleY(+yearExtent[1] + YEARS_OFFSET) + 'px')
     
-    
-    // simulation = d3.forceSimulation(events)
-    //     .force('collision', d3.forceCollide())
-    //     .force('x', d3.forceX())
-    //     .force('y', d3.forceY())
-    //     .alphaDecay(.0005)
-    //     .velocityDecay(0.6)
-    //     .on("tick", function tick(e) {
-    //         svg.selectAll('g.event-bubble')
-    //         .attr('transform', function (d) {
-    //             d.fy = isZooming ? transformedScaleY(d.year) : undefined;
-    //             return  `translate(${d.x}, ${d.y})`;
-    //         }); 
-    //     });
-    
-    updateTimeline(svg, eventsNested);
+    updateTimeline(svg, eventsNested, celebsNested, yearRange);
     
 
     // EVENTS
     d3.select("#button-start").on('click', function () {
         BIRTH_YEAR = +d3.select('#year-select').node().value;
-        d3.select("#cover-page").classed('hidden', true);
+        if (BIRTH_YEAR) {
+            d3.selectAll(".fill-birth-year").text(BIRTH_YEAR);
+            // d3.selectAll("#intro-page").classed('reset', true);
+            // d3.selectAll("#intro-page").classed('reset', false);
+            d3.selectAll("#intro-page").classed('blink', true);
+            d3.select("#cover-page").classed('hidden', true);
+            window.scrollTo(0, scaleY(BIRTH_YEAR) - SCROLL_OFFSET);
+        }
+    });
 
-        // console.log(BIRTH_YEAR, );
-        window.scrollTo(0, scaleY(BIRTH_YEAR) - SCROLL_OFFSET);
+    d3.select("#button-change-birth-year").on('click', function () {
+        d3.select("#cover-page").classed('hidden', false);
+        d3.selectAll("#intro-page").classed('blink', false);
     });
 
     d3.select("#year-change-toggle").on('click', function toggleYearChange () {
@@ -265,16 +261,19 @@ Promise.all([
 })
 
 
-function updateTimeline (svg, eventsNested) {
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+function updateTimeline (svg, eventsNested, celebsNested, yearRange) {
     IMPORTANCE_CUTOFF = Math.floor(currentTransform.k / 0.8 + 0.5);
-    updateYearScale(svg);
+    updateYearScale(svg, yearRange);
     updateEvents(svg, eventsNested);
+    updateCelebrities(svg, celebsNested);
 }
 
 
-function updateYearScale (svg, transform = d3.zoomIdentity) {
+function updateYearScale (svg, yearRange, transform = d3.zoomIdentity) {
     
-    let yearRange = d3.range(1920, 2020);
     let yearGroupEnter = svg.selectAll('.year')
     .data(yearRange)
     .enter()
@@ -358,9 +357,9 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
         eventBubbleG.append('path')
             .attr('class', 'bubble-link-path')
             .attr('d', (d, i) => `
-                M ${LEFT_SPACE_SAFE - X_ANCHOR}, ${-i * SPACE_PER_EVENT}
-                L ${((LEFT_SPACE_SAFE - X_ANCHOR) - scaleR(d.importance)) / 2}, ${-i * SPACE_PER_EVENT}
-                L ${((LEFT_SPACE_SAFE - X_ANCHOR) - scaleR(d.importance)) / 2}, ${0}
+                M ${LEFT_SPACE + YEAR_SPACE_PADDING - X_ANCHOR}, ${-i * SPACE_PER_EVENT}
+                L ${((LEFT_SPACE + YEAR_SPACE_PADDING - X_ANCHOR) - scaleR(d.importance)) / 2}, ${-i * SPACE_PER_EVENT}
+                L ${((LEFT_SPACE + YEAR_SPACE_PADDING - X_ANCHOR) - scaleR(d.importance)) / 2}, ${0}
                 L ${0}, ${0}
             `)
 
@@ -417,7 +416,7 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
         moreBadgeEnter.merge(svg.selectAll('.more-badge')) : 
         svg.selectAll('.more-badge');
 
-    console.log(IMPORTANCE_CUTOFF);
+    // console.log(IMPORTANCE_CUTOFF);
     let BADGE_OFFSET = 25;
     moreBadge
         .attr('transform', d => `translate(0, ${Math.max(countShownEvents(d) * SPACE_PER_EVENT - BADGE_OFFSET, 0)})`)
@@ -427,9 +426,9 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
             let yOffset = -(countShownEvents(d) * SPACE_PER_EVENT - BADGE_OFFSET);
             yOffset = Math.min(yOffset, 0);
             return `
-                M ${LEFT_SPACE_SAFE - X_ANCHOR}, ${yOffset}
-                L ${((LEFT_SPACE_SAFE - X_ANCHOR) - 30) / 2}, ${yOffset}
-                L ${((LEFT_SPACE_SAFE - X_ANCHOR) - 30) / 2}, ${0}
+                M ${LEFT_SPACE + YEAR_SPACE_PADDING - X_ANCHOR}, ${yOffset}
+                L ${((LEFT_SPACE + YEAR_SPACE_PADDING - X_ANCHOR) - 30) / 2}, ${yOffset}
+                L ${((LEFT_SPACE + YEAR_SPACE_PADDING - X_ANCHOR) - 30) / 2}, ${0}
                 L ${0}, ${0}
             `
         })
@@ -461,40 +460,97 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
     // }
 }
 
-// function updateEvents (selection, data, yearExtent) {
-//     selection.attr('height', scaleY(+yearExtent[1] + YEARS_OFFSET +240) + 'px');
+function updateCelebrities (svg, celebsNested = [], transform = d3.zoomIdentity) {
+    // let transformedScaleY = transform.rescaleY(scaleY);
     
-//     let eventG = selection.selectAll('.event')
-//         .data(data)
-//         .enter()
-//         .append('div')
-//         .attr('class', 'event-container')
-//         .style('top', e => `${scaleY(+e.year)}px`)
-//         .html(function (d, i) {
-//             return eventTemplate({
-//                 year: d.year,
-//                 event: d.events[0].event,
-//                 celebrity: d.celebrity || {}
-//             })
-//         });
+    let celebYearGroupEnter = null;
+    let celebGroupEnter = null;
+    
+    // eventsNested.forEach(d => {
+    //     d.hiddenCount = d.events.filter(x => x.importance > IMPORTANCE_CUTOFF).length;
+    // });
 
-//     eventG.filter(d => !('celebrity' in d))
-//         .select('.celebrity')
-//         .classed('hidden', true)
-//         // .attr('transform', e => `translate(0,${scaleY(+e.year)})`);
+    if (celebsNested.length > 0) {
+
+        celebYearGroupEnter = svg.selectAll('.celeb-year-group')
+            .data(celebsNested)
+            .enter()
+            .append('g')
+            .attr('class', 'celeb-year-group')
+            // .attr('transform', d => `translate(${X_ANCHOR}, ${transformedScaleY(d.year)})`);
     
-//     // eventG.append('line')
-//     //     .attr('x1', 0)
-//     //     .attr('y1', 0)
-//     //     .attr('x2', 20)
-//     //     .attr('y2', 0)
-//     //     .attr('stroke', '#000')
-//     // eventG.append('text')
-//     //     .attr('alignment-baseline', 'middle')
-//     //     .text(e => e.year + ' ' + e.events[0].event)
-//     //     .attr('x', 25)
-//     //     // .style('opacity', '0.2')
-// }
+        celebGroupEnter = celebYearGroupEnter.selectAll('.celeb')
+            .data(d => d.celebs)
+            .enter()
+            .append('g')
+            .attr('class', 'celeb')
+            .attr('transform', (d, i) => `translate(0, ${i * SPACE_PER_EVENT})`)
+        
+        var defs = celebGroupEnter.append('svg:defs');
+
+        let R = 15;
+        defs.append('svg:pattern')
+            .attr('id', d => `image_id_${d.image.replaceAll(/( |\.)/g, '_')}`)
+            .attr("width", d => 2 * R)
+            .attr("height", d => 2 * R)
+            .attr("x", d => -R)
+            .attr("y", d => -R)
+            .attr("patternUnits", "userSpaceOnUse")
+            .append("svg:image")
+            .attr("xlink:href", d => '/img/celebs/' + d.image)
+            .attr("width", d => 2 * R)
+            .attr("height", d => 2 * R);
+
+
+        let celebBubbleG = celebGroupEnter.append('g')
+            .attr('class', 'celeb-bubble')
+
+        celebBubbleG.append('path')
+            .attr('class', 'bubble-link-path')
+            .attr('d', (d, i) => `
+                M ${LEFT_SPACE - YEAR_SPACE_PADDING - X_ANCHOR_LEFT}, ${-i * SPACE_PER_EVENT}
+                L ${((LEFT_SPACE - YEAR_SPACE_PADDING - X_ANCHOR_LEFT) - R) / 2}, ${-i * SPACE_PER_EVENT}
+                L ${((LEFT_SPACE - YEAR_SPACE_PADDING - X_ANCHOR_LEFT) - R) / 2}, ${0}
+                L ${0}, ${0}
+            `)
+
+        celebBubbleG.append('circle')
+            .attr('cx', 0)
+            .attr('cy', 0)
+            .attr('r', d => R)
+            // .attr('fill', '#fff')
+            .style('fill', d => `url(#image_id_${d.image.replaceAll(/( |\.)/g, '_')})`)
+            .style('stroke', '#fff')
+            
+        celebBubbleG.append('foreignObject')
+            .attr('x', d => R + 10)
+            .attr('y', -50)
+            .attr('width', 120)
+            .attr('height', d => R * 2)
+            .attr('alignment-baseline', 'middle')
+            .attr('text-anchor', 'start')
+            .append('xhtml:p')
+            .attr('xmlns', 'http://www.w3.org/1999/xhtml')
+            .style('line-height', '1.1')
+            .attr('class', 'celeb-title')
+            .text(d => d.name)
+        
+            
+        // moreBadgeEnter.append('text')
+        //     .attr('class', 'svg-text-center')
+        //     .attr('fill', '#fff')
+    }
+
+    let celebGroup = celebGroupEnter  ? 
+        celebGroupEnter.merge(svg.selectAll('.celeb')) : 
+        svg.selectAll('.celeb');
+
+    let celebYearGroup = celebYearGroupEnter ? 
+        celebYearGroupEnter.merge(svg.selectAll('.celeb-year-group')) : 
+        svg.selectAll('.celeb-year-group');
+
+    celebYearGroup.attr('transform', d => `translate(${X_ANCHOR_LEFT}, ${transformedScaleY(d.year)})`);
+}
 
 function updateLifeEvents (selection, data, yearExtent) {
     selection.attr('height', scaleY(+yearExtent[1] + YEARS_OFFSET) + 'px');
