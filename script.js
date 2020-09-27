@@ -330,7 +330,7 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
 
         let R = 30;
         defs.append('svg:pattern')
-            .attr('id', d => `image_id_${d.image.replaceAll(/( |\.)/g, '_')}`)
+            .attr('id', d => `image_id_${d.image.replace(/( |\.)/g, '_')}`)
             .attr("width", d => 2 * R)
             .attr("height", d => 2 * R)
             .attr("x", d => -R)
@@ -368,7 +368,7 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
             .attr('cy', 0)
             .attr('r', d => scaleR(d.importance))
             // .attr('fill', '#fff')
-            .style('fill', d => `url(#image_id_${d.image.replaceAll(/( |\.)/g, '_')})`)
+            .style('fill', d => `url(#image_id_${d.image.replace(/( |\.)/g, '_')})`)
             .style('stroke', '#fff')
             
         eventBubbleG.append('foreignObject')
@@ -490,7 +490,7 @@ function updateCelebrities (svg, celebsNested = [], transform = d3.zoomIdentity)
 
         let R = 15;
         defs.append('svg:pattern')
-            .attr('id', d => `image_id_${d.image.replaceAll(/( |\.)/g, '_')}`)
+            .attr('id', d => `image_id_${d.image.replace(/( |\.)/g, '_')}`)
             .attr("width", d => 2 * R)
             .attr("height", d => 2 * R)
             .attr("x", d => -R)
@@ -519,7 +519,7 @@ function updateCelebrities (svg, celebsNested = [], transform = d3.zoomIdentity)
             .attr('cy', 0)
             .attr('r', d => R)
             // .attr('fill', '#fff')
-            .style('fill', d => `url(#image_id_${d.image.replaceAll(/( |\.)/g, '_')})`)
+            .style('fill', d => `url(#image_id_${d.image.replace(/( |\.)/g, '_')})`)
             .style('stroke', '#fff')
             
         celebBubbleG.append('foreignObject')
