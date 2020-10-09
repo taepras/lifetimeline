@@ -21,10 +21,10 @@
             <h1 class="title">เด็กสมัย<u>ไหน</u>?</h1>
             <p>จำได้ไหมว่าเราโตมากับอะไร? มาลองทบทวนกันว่าชีวิตเราผ่านเหตุการณ์ประวัติศาสตร์อะไรมาบ้าง และลองมองประวัติศาสตร์ ผ่านสายตาของคนต่างวัย ต่างยุคสมัย</p>
             <p>ฉันเกิดปี</p>
-            <select id="year-select" class="form-control mb-2" required>
+            <select id="year-select-main" class="form-control mb-2 year-select" required>
                 <option>เลือกปีเกิด</option>
             </select>
-            <button type="submit" id="button-start" class="btn btn-danger btn-block">Go</button>
+            <button type="button" class="btn btn-dark btn-block button-start">Go</button>
         </div>
     </div>
 
@@ -57,7 +57,7 @@
                 <div class="mr-3">
                     <a href="#" id="year-type-be" class="mode-link">พ.ศ.</a> | <a href="#" id="year-type-ad" class="mode-link">ค.ศ.</a>
                 </div>
-                <a href="#">About</a>
+                <a href="#" id="button-about">About</a>
             </p>
         </div>
     </div>
@@ -78,6 +78,28 @@
         <button class="btn btn-dark" id="button-change-birth-year">เปลี่ยนปีเกิด</button>
     </div>
 
+    <div class="fade-overlay hide" id="change-birthyear-popup">
+        <div class="popup">
+            <div class="popup-close">&times;</div>
+            <div class="content">
+                <b>เปลี่ยนปีเกิด</b>
+                <select class="form-control mb-2 year-select" id="year-change-select">
+                    <option>เลือกปีเกิด</option>
+                </select>
+                <button type="submit" class="btn btn-dark btn-block button-start" data-target-select="#year-change-select">เปลี่ยนปีเกิด</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="fade-overlay hide" id="shared-overlay">
+        <div class="popup">
+            <div class="popup-close">&times;</div>
+            <div class="content">....</div>
+        </div>
+    </div>
+
+    <button class="btn btn-link text-light" id="home-button">&laquo; Home</button>
+
     <script id="hb-template-event" type="text/x-handlebars-template">
         <div class="year-mark">{{year}}</div>
         <div class="celebrity">
@@ -91,6 +113,30 @@
            <div class="top-bar">{{year}}</div>
            <h2>{{event}}</h2>
         </div>
+     </script>
+
+     <script id="hb-template-event-popup" type="text/x-handlebars-template">
+        <div class="event-cover" style="background-image: url('/img/events/{{image}}')"></div>
+        <div class="brow">{{year}}</div>
+        <h2>{{event}}</h2>
+        <a href="{{link}}" target="_blank" class="btn btn-block btn-outline-dark">อ่านเพิ่มเกี่ยวกับเหตุการณ์นี้</a>
+     </script>
+
+     <script id="hb-template-celeb-popup" type="text/x-handlebars-template">
+        <div class="event-cover" style="background-image: url('/img/celebs/{{image}}')"></div>
+        <div class="brow">คนดังที่เกิดในปี {{year}}</div>
+        <h2>{{name}}</h2>
+        <p>{{description}}</p>
+        <button class="btn btn-block btn-dark set-birthyear" data-target-year="{{year}}">เปลี่ยนปีเกิด</a>
+     </script>
+
+     <script id="hb-template-about-popup" type="text/x-handlebars-template">
+        <h2>About</h2>
+        <blockquote>"เราอยากให้คนเข้าใจกัน..."</blockquote>
+        <p>
+            ธนวิชญ์ ประสงค์พงษ์ชัย<br>
+            อลิษา ลิ้มไพบูลย์
+        </p>  
      </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>

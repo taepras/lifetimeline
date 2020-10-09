@@ -18,6 +18,10 @@ let X_ANCHOR = 220;
 let X_ANCHOR_LEFT = 80;
 let IMPORTANCE_CUTOFF = 1;
 
+let BLINK_TIME = 4000;
+
+let YEAR_MODE = 'ad';
+
 
 let events, life, celebrities;
 
@@ -31,6 +35,9 @@ const ZOOM_EXTENT = [1, 4];
 
 
 const eventTemplate = Handlebars.compile(document.getElementById('hb-template-event').innerHTML);
+const eventPopupTemplate = Handlebars.compile(document.getElementById('hb-template-event-popup').innerHTML);
+const celebPopupTemplate = Handlebars.compile(document.getElementById('hb-template-celeb-popup').innerHTML);
+const aboutPopupTemplate = Handlebars.compile(document.getElementById('hb-template-about-popup').innerHTML);
 
 Promise.all([
     d3.csv("events.csv"),
@@ -176,7 +183,7 @@ Promise.all([
     let eventsDiv = d3.select('#events');
     let lifeDiv = d3.select('#life');
 
-    d3.select('#year-select')
+    d3.selectAll('.year-select')
         .selectAll('option')
         .data(yearRange.reverse())
         .enter()
@@ -195,19 +202,30 @@ Promise.all([
     
 
     // EVENTS
-    d3.select("#button-start").on('click', function () {
-        BIRTH_YEAR = +d3.select('#year-select').node().value;
-        if (BIRTH_YEAR) {
-            d3.selectAll(".fill-birth-year").text(BIRTH_YEAR);
-            // d3.selectAll("#intro-page").classed('reset', true);
-            // d3.selectAll("#intro-page").classed('reset', false);
-            d3.selectAll("#intro-page").classed('blink', true);
-            d3.select("#cover-page").classed('hidden', true);
-            window.scrollTo(0, scaleY(BIRTH_YEAR) - SCROLL_OFFSET);
-        }
+    d3.selectAll(".button-start").on('click', function () {
+        let yearSelectSelector = d3.select(this).attr('data-target-select') || '.year-select';
+        let selectedYear = d3.select(yearSelectSelector).node().value;
+        setBirthYear(+selectedYear);
+        d3.selectAll('.event-year-group').classed('hidden', true);
+        if (this.closest('.fade-overlay'))
+            d3.select(this.closest('.fade-overlay')).classed('hide', true);
+
+        d3.selectAll('.year-select').property('value', selectedYear);
+
+        d3.selectAll('.event-year-group').each(function (d, i, el) {
+            setTimeout(function () {
+                d3.select(el[i]).classed('hide', false);
+            }, d.year >= BIRTH_YEAR ? (d.year - BIRTH_YEAR) * 300 + BLINK_TIME : 0);
+        })
     });
 
     d3.select("#button-change-birth-year").on('click', function () {
+        d3.select("#change-birthyear-popup").classed('hide', false);
+        // d3.select("#cover-page").classed('hidden', false);
+        // d3.selectAll("#intro-page").classed('blink', false);
+    });
+
+    d3.select("#home-button").on('click', function () {
         d3.select("#cover-page").classed('hidden', false);
         d3.selectAll("#intro-page").classed('blink', false);
     });
@@ -238,22 +256,43 @@ Promise.all([
         }
     });
 
-    
-    d3.select("#year-type-be").on('click', setYearType('be'));
-    d3.select("#year-type-ad").on('click', setYearType('ad'));
-    
-    setYearType('ad')();
+    d3.selectAll('.popup-close').on('click', function () {
+        console.log('close', this.closest('.fade-overlay'))
+        d3.select(this.closest('.fade-overlay')).classed('hide', true)
+    });
 
-    function setYearType(type) {
-        return function () {
-            try {
-                d3.event.preventDefault();
-            } catch (e) {};
-            // eventsDiv.selectAll('.event')
-            //     .text(e => '- ' + (+e.year + (type == 'be' ? 543 : 0)) + ' ' + e.events[0].event);
-            d3.select("#year-type-be").classed('active', type == 'be');
-            d3.select("#year-type-ad").classed('active', type == 'ad');
-        }
+    d3.selectAll('.fade-overlay').on('click', function (e) {
+        if (e.target == this)
+            d3.select(this).classed('hide', true)
+    });
+
+    d3.select("#button-about").on('click', function (e) {
+        e.preventDefault();
+        d3.select('#shared-overlay .content').html(aboutPopupTemplate());
+        d3.select('#shared-overlay').classed('hide', false);
+    });
+
+    
+    
+    d3.select("#year-type-be").on('click', e => setYearType('be', e));
+    d3.select("#year-type-ad").on('click', e => setYearType('ad', e));
+    
+    setYearType('ad');
+
+    function setYearType(type, event) {
+        if (event)
+            event.preventDefault();
+        
+        YEAR_MODE = type
+            // d3.event.preventDefault();
+        // } catch (e) {};
+        d3.selectAll('.year-number').text(function (d) {
+            return +d3.select(this).attr('data-year-ad') + (YEAR_MODE == 'be' ? 543 : 0);
+        })
+        // eventsDiv.selectAll('.event')
+        //     .text(e => '- ' + (+e.year + (type == 'be' ? 543 : 0)) + ' ' + e.events[0].event);
+        d3.select("#year-type-be").classed('active', YEAR_MODE == 'be');
+        d3.select("#year-type-ad").classed('active', YEAR_MODE == 'ad');
     }
 }).catch(function(err) {
     console.log('error:', err);
@@ -262,6 +301,23 @@ Promise.all([
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+function setBirthYear (year) {
+    console.log(year)
+    if (year) {
+        BIRTH_YEAR = year;
+        d3.selectAll(".fill-birth-year").text(+BIRTH_YEAR + (YEAR_MODE == 'be' ? 543 : 0));
+        d3.selectAll("#intro-page").classed('reset', true);
+        setTimeout(function () {
+            d3.selectAll("#intro-page").classed('reset', false);
+        }, 100);
+        d3.selectAll("#intro-page").classed('blink', false);
+        d3.selectAll("#intro-page").classed('blink', true);
+        d3.select("#cover-page").classed('hidden', true);
+        window.scrollTo(0, scaleY(BIRTH_YEAR) - SCROLL_OFFSET);
+    }
+}
 
 
 function updateTimeline (svg, eventsNested, celebsNested, yearRange) {
@@ -282,6 +338,8 @@ function updateYearScale (svg, yearRange, transform = d3.zoomIdentity) {
     
     yearGroupEnter.append('text')
     .text(d => d)
+    .classed('year-number', true)
+    .attr('data-year-ad', d => d)
     
     yearGroupEnter.append('line')
     .attr('stroke', '#000');
@@ -316,7 +374,7 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
             .data(eventsNested)
             .enter()
             .append('g')
-            .attr('class', 'event-year-group')
+            .attr('class', 'event-year-group hide')
             // .attr('transform', d => `translate(${X_ANCHOR}, ${transformedScaleY(d.year)})`);
     
         eventGroupEnter = eventYearGroupEnter.selectAll('.event')
@@ -370,6 +428,15 @@ function updateEvents (svg, eventsNested = [], transform = d3.zoomIdentity) {
             // .attr('fill', '#fff')
             .style('fill', d => `url(#image_id_${d.image.replace(/( |\.)/g, '_')})`)
             .style('stroke', '#fff')
+            .on('click', function (e, d) {
+                let dataProcessed = {
+                    ...d,
+                    year: +d.year + (YEAR_MODE == 'be' ? 543 : 0),
+                    yearMode: YEAR_MODE
+                }
+                d3.select('#shared-overlay .content').html(eventPopupTemplate(dataProcessed));
+                d3.select('#shared-overlay').classed('hide', false);
+            })
             
         eventBubbleG.append('foreignObject')
             .attr('x', d => scaleR(d.importance) + 10)
@@ -521,6 +588,19 @@ function updateCelebrities (svg, celebsNested = [], transform = d3.zoomIdentity)
             // .attr('fill', '#fff')
             .style('fill', d => `url(#image_id_${d.image.replace(/( |\.)/g, '_')})`)
             .style('stroke', '#fff')
+            .on('click', function (e, d) {
+                let dataProcessed = {
+                    ...d,
+                    year: +d.year + (YEAR_MODE == 'be' ? 543 : 0),
+                    yearMode: YEAR_MODE
+                }
+                d3.select('#shared-overlay .content').html(celebPopupTemplate(dataProcessed));
+                d3.select('#shared-overlay').classed('hide', false);
+                d3.selectAll('.set-birthyear').on('click', function (e) {
+                    setBirthYear(+d3.select(this).attr('data-target-year'));
+                    d3.select('#shared-overlay').classed('hide', true);
+                })
+            })
             
         celebBubbleG.append('foreignObject')
             .attr('x', d => R + 10)
@@ -586,6 +666,8 @@ function onScroll () {
         .text(currentAge >= 0 ? `อายุ ${currentAge} ปี` : `ก่อนเกิด ${-currentAge} ปี`);
 
     let currentLifeStage = 0;
+
+    d3.select('body').classed('not-born', currentAge < 0)
     if (currentAge < 0) {
         d3.select('.life-status .stage').text('ยังไม่เกิด');
         d3.select('.life-status .image').style('background-image', '');

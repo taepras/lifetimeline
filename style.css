@@ -6,10 +6,10 @@ h1, h2, h3, h4, h5, h6,
 h1 *, h2 *, h3 *, h4 *, h5 *, h6 * { font-family: tannakone-condensed, sans-serif; }
 
 h2 {
-    font-size: 16pt;
+    font-size: 32px;
 }
 
-p, div, input, button, li, .form-control { font-size: 16pt; }
+p, div, input, button, a, li, .form-control, .btn { font-size: 16pt; }
 
 h1 { font-size: 48pt; }
 .title {
@@ -25,10 +25,15 @@ body {
     overscroll-behavior-y: contain;
 
     /* background-color: rgb(241, 225, 204); */
-    background-color: #4C4C47;
+    background-color: #777;
     /* overflow-x: hidden; */
     width: 100%;
     /* position: relative; */
+    transition: background-color 1s;
+}
+
+body.not-born {
+    background-color: #111111;
 }
 
 #app {
@@ -225,7 +230,8 @@ body {
 
 #cover-page {
     transition: transform 1s;
-    background-color: rgb(241, 225, 204);
+    /* background-color: rgb(241, 225, 204); */
+    background-color: #eee;
     z-index: 10001;
 }
 
@@ -234,6 +240,11 @@ body {
     color: #ffffff;
     overflow: hidden;
     /* background-color: #111; */
+    transition: 0.5s all;
+}
+
+#intro-page.reset {
+    opacity: 0;
 }
 
 #eyelid-top {
@@ -273,12 +284,14 @@ body {
     animation: blink-top 2s;
     animation-delay: 2s;
     animation-fill-mode: forwards;
+    transition: 0.3s all;
 }
 
 .blink #eyelid-bottom {
     animation: blink-bottom 2s;
     animation-delay: 2s;
     animation-fill-mode: forwards;
+    transition: 0.3s all;
 }
 
 @keyframes blink-top {
@@ -362,7 +375,7 @@ body {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background-color: #000;
+    background-color: #111;
     background-size: cover;
     background-position: center center;
     z-index: 10000;
@@ -424,4 +437,82 @@ body {
 @keyframes typing {
     from { width: 0 }
     to { width: 100% }
+}
+
+.fade-overlay {
+    z-index: 10000000;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #0008;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.fade-overlay.hide {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.fade-overlay .popup {
+    position: relative;
+    z-index: 10000000;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    width: 80vw;
+    min-width: 250px;
+    max-width: calc(100vw - 64px);
+    /* height: 200px; */
+    transition: all 0.3s;
+}
+
+.fade-overlay.hide .popup {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.popup .popup-close {
+    font-weight: bold;
+    position: absolute;
+    /* top: 16px;
+    right: 16px; */
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #0008;
+}
+
+.event-cover {
+    width: 100%;
+    height: 200px;
+    background-position: center center;
+    background-size: cover;
+}
+
+#home-button {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+}
+
+.event-year-group {
+    transition: 0.5s all;
+}
+
+.event-year-group.hide {
+    opacity: 0;
+    pointer-events: none;
 }
