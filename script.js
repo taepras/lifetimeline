@@ -555,7 +555,7 @@ function updateCelebrities (svg, celebsNested = [], transform = d3.zoomIdentity)
         
         var defs = celebGroupEnter.append('svg:defs');
 
-        let R = 15;
+        let R = 20;
         defs.append('svg:pattern')
             .attr('id', d => `image_id_${d.image.replace(/( |\.)/g, '_')}`)
             .attr("width", d => 2 * R)
