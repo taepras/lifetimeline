@@ -509,7 +509,7 @@ body.not-born {
 }
 
 .event-year-group {
-    transition: 0.5s all;
+    transition: 0.5s opacity;
 }
 
 .event-year-group.hide {
