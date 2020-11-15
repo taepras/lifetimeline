@@ -1,2 +1,2 @@
 npm run build
-mv build/* ../ -v
+cp build/* ../ -v -R
