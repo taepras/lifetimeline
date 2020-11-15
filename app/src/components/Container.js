@@ -5,7 +5,7 @@ console.log(theme.spacing.x2);
 
 const Container = styled.div`
     width: auto;
-    max-width: 720px;
+    max-width: ${theme.containerMaxWidth}px;
     margin: auto;
     padding: 0 ${({padding}) => padding || theme.spacing.x2}px;
 

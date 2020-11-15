@@ -10,7 +10,7 @@ import MenuBar from "./components/MenuBar";
 import Dialog from "./components/Dialog";
 
 function App() {
-  const [appMode, setAppMode] = useState("home");
+  const [appMode, setAppMode] = useState("timeline");
   const [yearMode, setYearMode] = useState("ad");
   const [birthYear, setBirthYear] = useState(1995);
   const [isTransitioning, setTransitioning] = useState(false);

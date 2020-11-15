@@ -5,9 +5,6 @@ import EventBubble from "./EventBubble";
 
 const StyledYearGroup = styled.div`
   position: absolute;
-  top: ${({ y }) => y}px;
-
-  /* transition: top 0.2s; */
 `;
 
 function YearGroup({
@@ -19,7 +16,8 @@ function YearGroup({
   maxDisplay = 1,
   className,
   children,
-  onDialogOpen = (event) => {}
+  smoothTransition = true,
+  onDialogOpen = (event) => {},
 }) {
   // console.log("events", data.year, data);
   const getBubbleYPosition = (index) =>
@@ -30,11 +28,15 @@ function YearGroup({
   const getBubbleXPosition = (index) =>
     index < maxDisplay
       ? 0
-      : Config.xOffsetCollapsedEvents +
-        (index - maxDisplay) * Config.xSpacePerCollapsedEvent;
+      : (index - maxDisplay) * Config.xSpacePerCollapsedEvent;
 
   return (
-    <StyledYearGroup y={y}>
+    <StyledYearGroup
+      style={{
+        transform: `translateY(${y}px)`,
+        transition: smoothTransition ? "0.3s all" : "none",
+      }}
+    >
       {Utils.typeYear(year, yearMode)} | {+year - +birthYear} ปี
       {data.events.map((event, index) => (
         <>
@@ -46,6 +48,7 @@ function YearGroup({
             image={event.image}
             collapsed={index >= maxDisplay}
             z={10 - index}
+            key={year + "-" + index}
             onClick={() => onDialogOpen(event)}
           />
         </>

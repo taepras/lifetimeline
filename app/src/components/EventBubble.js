@@ -21,16 +21,21 @@ const StyledEvent = styled.div`
   display: flex;
   width: 200px;
   max-width: 200px;
+  height: 64px;
+  overflow: visible;
   align-items: center;
   transform: translateY(-50%);
   position: ${({ relative }) => (relative ? "relative" : "absolute")};
   z-index: ${({z}) => z};
+
+  transition: 0.3s all;
 `;
 
 const EventThumbnail = styled.div`
-  width: ${({ collapsed }) => (collapsed ? "24px" : "64px")};
-  flex: 0 0 ${({ collapsed }) => (collapsed ? "24px" : "64px")};
-  height: ${({ collapsed }) => (collapsed ? "24px" : "64px")};
+  width: 64px; //${({ collapsed }) => (collapsed ? "24px" : "64px")};
+  flex: 0 0 64px;//${({ collapsed }) => (collapsed ? "24px" : "64px")};
+  height: 64px;//${({ collapsed }) => (collapsed ? "24px" : "64px")};
+  ${({ collapsed }) => collapsed && `transform: scale(0.375);`}
   border-radius: ${({ eventType }) =>
     eventType == "birthyear" ? "50%" : "8px"};
   box-sizing: border-box;
@@ -39,12 +44,14 @@ const EventThumbnail = styled.div`
   /* background-image: url(${({ image }) => image}); */
   background-size: cover;
   background-position: center center;
-  border: ${borderWidth}px solid
+  border: ${({ collapsed }) => borderWidth * (collapsed ? 2.5 : 1)}px solid
     ${({ eventType }) => handleColorType(eventType)};
   margin-right: ${Theme.spacing.x1 * 1.5}px;
   position: relative;
   box-shadow: 0px 2px 4px
     ${({ eventType }) => darken(0.3, handleColorType(eventType))}44;
+
+  transition: 0.3s transform;
 `;
 
 const EventIcon = styled.div`
@@ -90,7 +97,7 @@ function EventBubble({
         if (!collapsed) onClick();
       }}
       relative={relative}
-      style={{ left: x, top: y }}
+      style={{ transform: `translate(${x}px, ${y}px)` }}
       z={z}
     >
       <EventThumbnail

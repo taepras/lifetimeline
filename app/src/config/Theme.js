@@ -1,6 +1,7 @@
 const BASE_UNIT = 8;
 
 export default {
+    containerMaxWidth: 600,
     spacing: {
         xxs: BASE_UNIT / 4,
         xs: BASE_UNIT / 2,
