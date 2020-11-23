@@ -32,12 +32,10 @@ function YearSelector({
     <>
       <Select onChange={handleChange}>
         <option>เลือกปีเกิด</option>
-        {yearRange.reverse().map((y) => (
-          <>
-            <option key={`select-${y}`} value={y}>
-              {Utils.typeYear(y, yearMode, true)}
-            </option>
-          </>
+        {yearRange.reverse().map((y, i) => (
+          <option key={`select-${y}`} value={y}>
+            {Utils.typeYear(y, yearMode, true)}
+          </option>
         ))}
       </Select>
       {errorMsg}

@@ -248,7 +248,7 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
           </h1>
           <Button onClick={() => setOpenYearChange(true)}>เปลี่ยนปีเกิด</Button>
         </Banner>
-        {eventsNested.map((x) => (
+        {eventsNested.map((x, i) => (
           <YearGroup
             year={x.year}
             data={x}
@@ -258,6 +258,7 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
             onDialogOpen={openDialog}
             maxDisplay={transform.k}
             smoothTransition={!isNormalizingTransform}
+            key={`item${i}`}
           />
         ))}
         <EventDialog

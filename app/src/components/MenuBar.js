@@ -59,7 +59,7 @@ function MenuBar({
             onClick={(e) => {
               handleYearMode(e, "be");
             }}
-            className={yearMode == 'be' && `active`}
+            className={yearMode == 'be' ? 'active' : ''}
           >
             พ.ศ.
           </a>{" "}
@@ -69,7 +69,7 @@ function MenuBar({
             onClick={(e) => {
               handleYearMode(e, "ad");
             }}
-            className={yearMode == 'ad' && `active`}
+            className={yearMode == 'ad' ? 'active' : ''}
           >
             ค.ศ.
           </a>

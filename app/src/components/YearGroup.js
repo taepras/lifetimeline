@@ -39,19 +39,17 @@ function YearGroup({
     >
       {Utils.typeYear(year, yearMode)} | {+year - +birthYear} ปี
       {data.events.map((event, index) => (
-        <>
-          <EventBubble
-            y={getBubbleYPosition(index)}
-            x={100 + getBubbleXPosition(index)}
-            title={event.event}
-            type={event.type}
-            image={event.image}
-            collapsed={index >= maxDisplay}
-            z={10 - index}
-            key={year + "-" + index}
-            onClick={() => onDialogOpen(event)}
-          />
-        </>
+        <EventBubble
+          y={getBubbleYPosition(index)}
+          x={100 + getBubbleXPosition(index)}
+          title={event.event}
+          type={event.type}
+          image={event.image}
+          collapsed={index >= maxDisplay}
+          z={10 - index}
+          key={year + "-" + index}
+          onClick={() => onDialogOpen(event)}
+        />
       ))}
     </StyledYearGroup>
   );
