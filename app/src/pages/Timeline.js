@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import styled from "styled-components";
 import Container from "../components/Container";
 import Button from "../components/Button";
@@ -58,17 +58,23 @@ const RefLine = styled.div`
   top: 50vh;
 `;
 
+const zoomExtent = [1, 5];
+
+const yearStartDisplay = Config.yearRangeMin - Config.yearsOffset;
+const yearEndDisplay = Config.yearRangeMax + Config.yearsOffset;
+
+const yearSpan = Config.yearRangeMax - Config.yearRangeMin;
+const yearSpanToDisplay = yearSpan + 2 * Config.yearsOffset;
+const timelineMinLength = yearSpanToDisplay * Config.yearHeight;
+const timelineMaxLength = timelineMinLength * zoomExtent[1];
+
+const maxZoomOffset = timelineMaxLength - timelineMinLength;
+const maxContainerHeight = timelineMaxLength * 2 - timelineMinLength;
+
 const scaleY = d3Scale
   .scaleLinear()
-  .domain([
-    Config.yearRangeMin - Config.yearsOffset,
-    Config.yearRangeMax + Config.yearsOffset,
-  ])
-  .range([
-    0,
-    (Config.yearRangeMax - Config.yearRangeMin + 2 * Config.yearsOffset) *
-      Config.yearHeight,
-  ]);
+  .domain([yearStartDisplay, yearEndDisplay])
+  .range([maxZoomOffset, maxZoomOffset + timelineMinLength]);
 
 function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
   const [isDialogOpen, setDialogOpen] = useState(false);
@@ -80,11 +86,22 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
   const [transformedScaleY, setTransformedScaleY] = useStateWithPromise(
     () => scaleY
   );
-  const [timelineHeight, setTimelineHeight] = useStateWithPromise(0);
+  // const transformedScaleY = useMemo(() => transform.rescaleY(scaleY), [transform]);
   const [smoothTransition, setSmoothTransition] = useStateWithPromise(true);
   const [isNormalizingTransform, setNormalizingTransform] = useStateWithPromise(
     false
   );
+
+
+  const scrollRange = useMemo(() => {
+    let x = [
+      transformedScaleY(yearStartDisplay),
+      transformedScaleY(yearEndDisplay),
+    ];
+    return x;
+  }, [transformedScaleY]);
+
+  const [currentScrollListener, setCurrentScrollListener] = useState(null)
 
   const refLineEl = useRef(null);
 
@@ -123,6 +140,29 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
   };
 
   useEffect(() => {
+    if (currentScrollListener)
+      window.removeEventListener("scroll", currentScrollListener);
+    
+    const handleScroll = (e) => {
+      const scrollOffset =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      // console.log(scrollRange, transform);
+      if (scrollOffset < scrollRange[0]) {
+        console.log('too low')
+        e.preventDefault();
+        window.scrollTo(0, scrollRange[0]);
+      }
+      if (scrollOffset > scrollRange[1]) {
+        console.log('too high')
+        e.preventDefault();
+        window.scrollTo(0, scrollRange[1]);
+      }
+    };
+    setCurrentScrollListener(() => handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: false });
+  }, [scrollRange]);
+
+  useEffect(() => {
     Promise.all([
       d3.csv(eventsData),
       d3.csv(lifeData),
@@ -137,9 +177,6 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
       setEventsNested(eventsNestedTemp);
 
       scrollToYear(birthYear);
-      // let transformedScaleY = d3.zoomIdentity.rescaleY(scaleY);
-
-      // console.log(eventsNested, eventsNestedTemp, events, celebrities);
     });
   }, []);
 
@@ -157,7 +194,11 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
   };
 
   const zoom = async (dz) => {
-    let tempZoomLevel = Utils.Clamp(transform.k + dz, 1, 5);
+    let tempZoomLevel = Utils.Clamp(
+      transform.k + dz,
+      zoomExtent[0],
+      zoomExtent[1]
+    );
     // let k = Utils.Clamp(transform.k * dy / lastDy, 1, 5);
     let scrollTop = document.documentElement.scrollTop;
     let refLineBb = refLineEl.current.getBoundingClientRect();
@@ -166,29 +207,22 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
     let oldRefY = zoomCenterY;
     let newRefY = zoomCenterY * tempZoomLevel;
     let dyScroll = newRefY - oldRefY;
-    let tempTransform = d3.zoomIdentity
-      .translate(0, -dyScroll)
-      .scale(tempZoomLevel);
+    // let tempTransform = d3.zoomIdentity
+    let tempTransform = transform
+      .translate(0, -zoomCenterY)
+      .scale(tempZoomLevel / transform.k);
+      // .scale(tempZoomLevel);
+    
+    console.log(tempTransform, zoomCenterY);
 
-    let tempScaleY = tempTransform.rescaleY(scaleY);
+    let tempScaleY = tempTransform.rescaleY(transformedScaleY);
 
     let _transform = transform;
 
-    await setTimelineHeight(
-      tempScaleY(Config.yearRangeMax + Config.yearsOffset)
-    );
-    console.log(
-      "setting transform",
-      transform,
-      tempTransform,
-      tempZoomLevel,
-      _transform
-    );
-    await Promise.all([
-      setTransform(tempTransform),
-      setTransformedScaleY(() => tempScaleY),
-    ]);
-    // setNormalizingTransform(true);
+    setTransform(tempTransform)
+    setTransformedScaleY(() => tempScaleY)
+    // await Promise.all([
+    // ])
   };
 
   const scrollToYear = (year, scale) => {
@@ -199,41 +233,12 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
     window.scrollTo(0, scrollY);
   };
 
-  const normalizeTransform = () => {
-    // return new Promise((resolve, reject) => {
-    let scrollY = document.documentElement.scrollTop;
-    let newScrollY = scrollY - transform.y;
-    let tempTransform = d3.zoomIdentity.translate(0, 0).scale(transform.k);
-    let tempTransformedScaleY = tempTransform.rescaleY(scaleY);
-
-    console.log(
-      "normalize",
-      document.documentElement.scrollTop,
-      transform,
-      newScrollY,
-      tempTransform
-    );
-
-    Promise.all([
-      setTransform(tempTransform),
-      setTransformedScaleY(() => tempTransformedScaleY),
-      setTimelineHeight(
-        tempTransformedScaleY(Config.yearRangeMax + Config.yearsOffset)
-      ),
-    ]).then(() => {
-      window.scrollTo(0, newScrollY);
-      setNormalizingTransform(false); //.then(resolve);
-    });
-    // });
-  };
-
   useEffect(onUpdate, []);
-  useEffect(normalizeTransform, [isNormalizingTransform]);
 
   return (
     <>
       <RefLine ref={refLineEl}></RefLine>
-      <Container style={{ height: timelineHeight }}>
+      <Container style={{ height: `${maxContainerHeight}px` }}>
         <Banner>
           <h1>
             <div style={{ fontSize: "21px" }}>โลกในมุมมอง</div>
