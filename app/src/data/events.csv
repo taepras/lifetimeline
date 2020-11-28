@@ -1,137 +1,156 @@
-year,type,importance,event,image,link
+year,type,importance,event,image,link,
 1920,world,2,มหาตมา คานธี เริ่มขบวนการอารยะขัดขืน,gandhi.jpg,https://en.wikipedia.org/wiki/Non-cooperation_movement
-1925,thailand,1,ร.7 ขึ้นครองราชย์,,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B2%E0%B8%97%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9B%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%AB%E0%B8%B1%E0%B8%A7
-1928,world,3,มิคกีเมาส์ปรากฏตัวครั้งแรก,mickey mouse.jpg,https://en.wikipedia.org/wiki/Mickey_Mouse
+1922,world,3,Reader's Digest วางขาย,readers digest.svg,
+1923,thailand,4,ภาพยนตร์ไทยเรื่องแรก นางสาวสุวรรณ ออกฉาย,kingdom of heaven.jpg,https://th.wikipedia.org/wiki/%E0%B8%99%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%B2%E0%B8%A7%E0%B8%AA%E0%B8%B8%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%93
+1925,thailand,1,รัชกาลที่ 7 ทรงขึ้นครองราชสมบัติ,rama vii.jpg,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B2%E0%B8%97%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9B%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%AB%E0%B8%B1%E0%B8%A7
+1928,world,3,Mickey Mouse ปรากฏตัวครั้งแรก,mickey mouse.jpg,https://en.wikipedia.org/wiki/Mickey_Mouse
 1929,world,2,ตลาดหลักทรัพย์วอลสตรีทตก (Wall Street Crash),wall street crash.jpg,https://en.wikipedia.org/wiki/Wall_Street_Crash_of_1929
 1929,world,1,ภาวะเศรษฐกิจตกต่ำครั้งใหญ่ (The Great Depression),great depression.gif,https://en.wikipedia.org/wiki/Great_Depression
-1932,thailand,1,การปฏิวัติสยาม เป็นประชาธิปไตย พ.ศ. 2475,,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%AA%E0%B8%A2%E0%B8%B2%E0%B8%A1_%E0%B8%9E.%E0%B8%A8._2475
-1933,thailand,2,กบฎบวรเดช,,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%9A%E0%B8%8F%E0%B8%9A%E0%B8%A7%E0%B8%A3%E0%B9%80%E0%B8%94%E0%B8%8A
-1935,thailand,1,ร.8 ขึ้นครองราชย์,,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B2%E0%B8%97%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9B%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%AD%E0%B8%B2%E0%B8%99%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%A1%E0%B8%AB%E0%B8%B4%E0%B8%94%E0%B8%A5_%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B1%E0%B8%90%E0%B8%A1%E0%B8%A3%E0%B8%B2%E0%B8%A1%E0%B8%B2%E0%B8%98%E0%B8%B4%E0%B8%9A%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3
-1938,thailand,1,จอมพลป. เป็นนายก,,https://th.wikipedia.org/wiki/%E0%B9%81%E0%B8%9B%E0%B8%A5%E0%B8%81_%E0%B8%9E%E0%B8%B4%E0%B8%9A%E0%B8%B9%E0%B8%A5%E0%B8%AA%E0%B8%87%E0%B8%84%E0%B8%A3%E0%B8%B2%E0%B8%A1
-1939,thailand,3,ประกาศใช้กฏหมายรัฐนิยม,,https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%99%E0%B8%B4%E0%B8%A2%E0%B8%A1
-1939,thailand,4,สุนทราภรณ์ ก่อตั้ง,,
+1930,thailand,3,วิทยุในไทยเริ่มกระจายเสียง,unlicensed radio thai.jpg,https://th.wikipedia.org/wiki/%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B8%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B2%E0%B8%A2%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2
+1932,thailand,1,สยามเปลี่ยนแปลงการปกครองเป็นระบอบประชาธิปไตย,siamese revolution 1932.jpg,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%AA%E0%B8%A2%E0%B8%B2%E0%B8%A1_%E0%B8%9E.%E0%B8%A8._2475
+1933,thailand,2,กบฎบวรเดช,bawondet.jpg,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%9A%E0%B8%8F%E0%B8%9A%E0%B8%A7%E0%B8%A3%E0%B9%80%E0%B8%94%E0%B8%8A
+1934,thailand,2,ปรีดี พนมยงค์ ก่อตั้งมหาวิทยาลัยธรรมศาสตร์,thammasat.png,https://en.wikipedia.org/wiki/Thammasat_University
+1935,thailand,1,รัชกาลที่ 8 ทรงขึ้นครองราชสมบัติ,rama viii.jpg,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B2%E0%B8%97%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9B%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%AD%E0%B8%B2%E0%B8%99%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%A1%E0%B8%AB%E0%B8%B4%E0%B8%94%E0%B8%A5_%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B1%E0%B8%90%E0%B8%A1%E0%B8%A3%E0%B8%B2%E0%B8%A1%E0%B8%B2%E0%B8%98%E0%B8%B4%E0%B8%9A%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3
+1937,world,1,การสังหารหมู่นานกิง,nanking massacre.jpg,https://en.wikipedia.org/wiki/Nanjing_Massacre
+1937,world,2,SPAM วางขาย,spam.svg,https://en.wikipedia.org/wiki/Spam_(food)
+1938,thailand,1,จอมพลป.พิบูลสงคราม เป็นนายกรัฐมนตรี,phibun songkhram.jpg,https://th.wikipedia.org/wiki/%E0%B9%81%E0%B8%9B%E0%B8%A5%E0%B8%81_%E0%B8%9E%E0%B8%B4%E0%B8%9A%E0%B8%B9%E0%B8%A5%E0%B8%AA%E0%B8%87%E0%B8%84%E0%B8%A3%E0%B8%B2%E0%B8%A1
+1939,thailand,2,ประกาศใช้กฏหมายรัฐนิยม ปรับวัฒนธรรมของชาติให้เป็นตะวันตกมากขึ้น,thai cultural revolution.png,https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%99%E0%B8%B4%E0%B8%A2%E0%B8%A1
+1939,thailand,3,สุนทราภรณ์ ก่อตั้ง,soontraporn.jpg,https://th.wikipedia.org/wiki/%E0%B8%A7%E0%B8%87%E0%B8%94%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B8%B5%E0%B8%AA%E0%B8%B8%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B2%E0%B8%A0%E0%B8%A3%E0%B8%93%E0%B9%8C
 1939,world,1,เริ่มสงครามโลกครั้งที่ 2,ww2.jpg,https://en.wikipedia.org/wiki/World_War_II
-1941,thailand,3,เกิดขบวนการเสรีไทย,,https://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%AA%E0%B8%A3%E0%B8%B5%E0%B9%84%E0%B8%97%E0%B8%A2
+1941,thailand,3,ขบวนการเสรีไทยก่อตั้ง,free thai.jpg,https://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%AA%E0%B8%A3%E0%B8%B5%E0%B9%84%E0%B8%97%E0%B8%A2
+1941,thailand,4,อนุสาวรีย์ชัยสมรภูมิสร้างเสร็จ,victory monument.jpg,https://en.wikipedia.org/wiki/Victory_Monument_(Bangkok)
+1943,thailand,2,จอมพลป. ก่อตั้งมหาวิทยาลัยเกษตรศาสตร์,Kasetsart.jpg,https://en.wikipedia.org/wiki/Kasetsart_University
+1943,thailand,2,ศิลป์ พีระศรี ก่อตั้งมหาวิทยาลัยศิลปากร,silpakorn.jpg,https://en.wikipedia.org/wiki/Silpakorn_University
 1945,world,2,สหรัฐฯ ทิ้งระเบิดปรมาณูที่ฮิโรชิมาและนางาซากิ,atomic bomb.jpg,https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki
 1945,world,1,สิ้นสุดสงครามโลกครั้งที่ 2 เริ่มสงครามเย็น,end ww2.jpg,https://en.wikipedia.org/wiki/Aftermath_of_World_War_II
 1945,world,3,การแบ่งแยกดินแดนอินเดีย-ปากีสถาน,india partition.jpg,https://en.wikipedia.org/wiki/Partition_of_India
-1946,thailand,1,ร.8 สวรรคต,,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%84%E0%B8%95%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B2%E0%B8%97%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9B%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%AD%E0%B8%B2%E0%B8%99%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%A1%E0%B8%AB%E0%B8%B4%E0%B8%94%E0%B8%A5
-1946,thailand,2,ร.9 ขึ้นครองราชย์,,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B2%E0%B8%97%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4%E0%B8%9E%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%B8%E0%B8%A5%E0%B8%A2%E0%B9%80%E0%B8%94%E0%B8%8A%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%B2%E0%B8%8A_%E0%B8%9A%E0%B8%A3%E0%B8%A1%E0%B8%99%E0%B8%B2%E0%B8%96%E0%B8%9A%E0%B8%9E%E0%B8%B4%E0%B8%95%E0%B8%A3
-1946,world,5,ภาพยนตร์เรื่อง It's a Wonderful Life ออกฉาย,it's a wonderful life.jpg,https://en.wikipedia.org/wiki/It%27s_a_Wonderful_Life
-1947,thailand,4,รัฐประหารโดย ????,,https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2490
+1946,thailand,1,รัชกาลที่ 8 สวรรคต รัชกาลที่ 9 ทรงขึ้นครองราชสมบัติ,rama 9.jpg,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%84%E0%B8%95%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B2%E0%B8%97%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9B%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%AD%E0%B8%B2%E0%B8%99%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%A1%E0%B8%AB%E0%B8%B4%E0%B8%94%E0%B8%A5
+1946,thailand,2,พรรคประชาธิปัตย์ พรรคการเมืองที่เก่าแก่ที่สุดที่ยังทำงานอยู่ ก่อตั้ง,prachatipat.png,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%84%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B2%E0%B8%98%E0%B8%B4%E0%B8%9B%E0%B8%B1%E0%B8%95%E0%B8%A2%E0%B9%8C
+1946,world,3,ภาพยนตร์ It's a Wonderful Life ออกฉาย,it's a wonderful life.jpg,https://en.wikipedia.org/wiki/It%27s_a_Wonderful_Life
+1947,thailand,4,รัฐประหารโดยพลโทผิน ชุณหะวัณ,coup 1947.jpg,https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2490
 1949,world,1,เหมาเจ๋อตงขึ้นสู่อำนาจ,mao zedong.jpg,https://en.wikipedia.org/wiki/Mao_Zedong
-1950,thailand,4,บรมราชาภิเษก ร.9,,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%9E%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%9A%E0%B8%A3%E0%B8%A1%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%B2%E0%B8%A0%E0%B8%B4%E0%B9%80%E0%B8%A9%E0%B8%81_%E0%B8%9E%E0%B8%B8%E0%B8%97%E0%B8%98%E0%B8%A8%E0%B8%B1%E0%B8%81%E0%B8%A3%E0%B8%B2%E0%B8%8A_2493
+1950,thailand,4,พระราชพิธีบรมราชาภิเษกรัชกาลที่ 9,rama 9 throne.jpg,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%9E%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%9A%E0%B8%A3%E0%B8%A1%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%B2%E0%B8%A0%E0%B8%B4%E0%B9%80%E0%B8%A9%E0%B8%81_%E0%B8%9E%E0%B8%B8%E0%B8%97%E0%B8%98%E0%B8%A8%E0%B8%B1%E0%B8%81%E0%B8%A3%E0%B8%B2%E0%B8%8A_2493
 1950,world,3,เริ่มสงครามเกาหลี,korean war.jpg,https://en.wikipedia.org/wiki/Korean_War
-1953,thailand,3,ศาลาเฉลิมไทยกลายเป็นโรงภาพยนตร์,,https://th.wikipedia.org/wiki/%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%B2%E0%B9%80%E0%B8%89%E0%B8%A5%E0%B8%B4%E0%B8%A1%E0%B9%84%E0%B8%97%E0%B8%A2#%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B8%E0%B9%88%E0%B8%87%E0%B9%82%E0%B8%A3%E0%B8%88%E0%B8%99%E0%B9%8C%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1
-1955,world,2,เริ่มสงครามเวียดนาม,vietnam war.jpg,https://en.wikipedia.org/wiki/Vietnam_War
-1957,thailand,4,รัฐประหารโดย ????,,https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2500
-1959,thailand,2,สฤษดิ์ ธนะรัชต์ เป็นนายก,,https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%A4%E0%B8%A9%E0%B8%94%E0%B8%B4%E0%B9%8C_%E0%B8%98%E0%B8%99%E0%B8%B0%E0%B8%A3%E0%B8%B1%E0%B8%8A%E0%B8%95%E0%B9%8C
-1960,thailand,3,ก่อตั้งการบินไทย,,https://en.wikipedia.org/wiki/Thai_Airways
+1953,thailand,3,ศาลาเฉลิมไทยกลายเป็นโรงภาพยนตร์,chalermthai theatre.jpg,https://th.wikipedia.org/wiki/%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%B2%E0%B9%80%E0%B8%89%E0%B8%A5%E0%B8%B4%E0%B8%A1%E0%B9%84%E0%B8%97%E0%B8%A2#%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B8%E0%B9%88%E0%B8%87%E0%B9%82%E0%B8%A3%E0%B8%88%E0%B8%99%E0%B9%8C%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1
+1953,world,1,พระราชพิธีบรมราชาภิเษกสมเด็จพระราชินีนาถเอลิซาเบธที่ 2 ,elizabeth ii.jpg,https://en.wikipedia.org/wiki/Elizabeth_II#Accession_and_coronation
+1955,world,1,เริ่มสงครามเวียดนาม,vietnam war.jpg,https://en.wikipedia.org/wiki/Vietnam_War
+1955,world,2,โรซา พาร์คส์ ปฏิเสธที่จะลุกจากที่นั่งของคนผิวขาวบนรถเมล์,rosa parks.jpg,https://en.wikipedia.org/wiki/Rosa_Parks
+1957,thailand,4,รัฐประหารโดยจอมพลสฤษดิ์ ธนะรัชต์,coup 1957.jpg,https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2500
+1959,thailand,2,สฤษดิ์ ธนะรัชต์ เป็นนายกรัฐมนตรี,Sarit Thanarat.jpg,https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%A4%E0%B8%A9%E0%B8%94%E0%B8%B4%E0%B9%8C_%E0%B8%98%E0%B8%99%E0%B8%B0%E0%B8%A3%E0%B8%B1%E0%B8%8A%E0%B8%95%E0%B9%8C
+1960,thailand,3,ก่อตั้งการบินไทย,thai airways.png,https://en.wikipedia.org/wiki/Thai_Airways
 1961,world,3,จอห์น เอฟ เคนเนดี ขึ้นเป็นประธานาธิบดี,jfk.jpg,https://en.wikipedia.org/wiki/John_F._Kennedy
 1962,world,3,รายการโทรทัศน์ผ่านสัญญาณดาวเทียมครั้งแรก,television satellite.jpg,https://en.wikipedia.org/wiki/Satellite_television
 1963,world,2,จอห์น เอฟ เคนเนดี ถูกลอบสังหาร,jfk assassinated.png,https://en.wikipedia.org/wiki/Assassination_of_John_F._Kennedy
 1963,world,3,"สุนทรพจน์ ""ผมมีความฝัน"" ของมาร์ติน ลูเธอร์ คิง จูเนียร์",mlk i have a dream.jpg,https://en.wikipedia.org/wiki/I_Have_a_Dream
-1963,world,4,เดอะ บีเทิลส์ ดังเป็นพลุแตก,the beatles.jpg,https://en.wikipedia.org/wiki/Beatlemania
-1964,thailand,5,ห้างไทยไดมารูเปิดให้บริการ,,https://th.wikipedia.org/wiki/%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B9%84%E0%B8%94%E0%B8%A1%E0%B8%B2%E0%B8%A3%E0%B8%B9
+1963,world,4,The Beatles ดังเป็นพลุแตก,the beatles.jpg,https://en.wikipedia.org/wiki/Beatlemania
+1964,thailand,5,ห้างไทยไดมารูเปิดให้บริการ,unlicensed daimaru.jpg,https://th.wikipedia.org/wiki/%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B9%84%E0%B8%94%E0%B8%A1%E0%B8%B2%E0%B8%A3%E0%B8%B9
 1964,world,4,โตเกียวโอลิมปิกส์,1964 tokyo olympics.jpg,https://en.wikipedia.org/wiki/1964_Summer_Olympics
-1965,thailand,5,อาภัสรา หงสกุล นางงามจักรวาลคนแรกของไทย,,
+1965,thailand,5,อาภัสรา หงสกุล ได้เป็นนางงามจักรวาลคนแรกของไทย,Apasra Hongsakula.jpg,https://th.wikipedia.org/wiki/%E0%B8%AD%E0%B8%B2%E0%B8%A0%E0%B8%B1%E0%B8%AA%E0%B8%A3%E0%B8%B2_%E0%B8%AB%E0%B8%87%E0%B8%AA%E0%B8%81%E0%B8%B8%E0%B8%A5
 1965,world,4,เริ่มปฏิบัติการกวาดล้างคอมมิวนิสต์ในอินโดนีเซีย,indo communist purge.jpg,https://en.wikipedia.org/wiki/Indonesian_mass_killings_of_1965%E2%80%9366
-1966,thailand,4,โรงภาพยนตร์สยามฉายหนังเรื่องแรก,,https://th.wikipedia.org/wiki/%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B9%8C%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B9%80%E0%B8%9E%E0%B9%87%E0%B8%81%E0%B8%8B%E0%B9%8C
+1966,thailand,3,โรงภาพยนตร์สยามฉายภาพยนตร์เรื่องแรก,unlicensed siam cinema.jpg,https://th.wikipedia.org/wiki/%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B9%8C%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B9%80%E0%B8%9E%E0%B9%87%E0%B8%81%E0%B8%8B%E0%B9%8C
 1966,world,2,จีนเริ่มปฏิวัติวัฒนธรรม,cultural revolution.jpg,https://en.wikipedia.org/wiki/Cultural_Revolution
 1968,world,2,มาร์ติน ลูเธอร์ คิง จูเนียร์ ถูกลอบสังหาร,mlk assassinated.jpg,https://en.wikipedia.org/wiki/Assassination_of_Martin_Luther_King_Jr.
 1969,world,1,มนุษย์คนแรกเหยียบดวงจันทร์,man on the moon.jpg,https://en.wikipedia.org/wiki/Apollo_11
 1969,world,2,การจลาจลที่ Stonewall นำไปสู่งาน pride ครั้งแรก,stonewall.jpg,https://en.wikipedia.org/wiki/Stonewall_riots
-1970,thailand,3,มิตร ชัยบัญชา ตกเฮลิคอปเตอร์,,https://th.wikipedia.org/wiki/%E0%B8%A1%E0%B8%B4%E0%B8%95%E0%B8%A3_%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B2
+1970,thailand,3,มิตร ชัยบัญชา เสียชีวิตจากการตกเฮลิคอปเตอร์,mitchaibancha.jpg,https://th.wikipedia.org/wiki/%E0%B8%A1%E0%B8%B4%E0%B8%95%E0%B8%A3_%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%9A%E0%B8%B1%E0%B8%8D%E0%B8%8A%E0%B8%B2
 1972,world,4,เฟอร์ดินาน มาร์กอส ประกาศใช้กฏอัยการศึกในฟิลิปปินส์,ferdinand marcos.jpg,https://en.wikipedia.org/wiki/Martial_law_under_Ferdinand_Marcos
-1973,thailand,1,14 ตุลา,,https://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%93%E0%B9%8C_14_%E0%B8%95%E0%B8%B8%E0%B8%A5%E0%B8%B2
-1975,world,3,Khmer Rouge ขึ้นสู่อำนาจ,khmer rouge.svg,https://en.wikipedia.org/wiki/Khmer_Rouge
-1975,world,5,Pathet Lao ขึ้นสู่อำนาจ,pathet lao.jpg,https://en.wikipedia.org/wiki/Pathet_Lao
-1975,world,4,กองทัพเวียดนามเหนือยึดไซ่ง่อน สิ้นสุดสงครามเวียดนาม,end vietnam war.jpg,https://en.wikipedia.org/wiki/Fall_of_Saigon
-1975,world,4,บริษัทไมโครซอฟต์ก่อตั้ง,microsoft.png,https://en.wikipedia.org/wiki/Microsoft
-1976,thailand,1,6 ตุลา,,https://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%93%E0%B9%8C_6_%E0%B8%95%E0%B8%B8%E0%B8%A5%E0%B8%B2
-1976,world,4,บริษัทแอปเปิลก่อตั้ง,apple.png,https://en.wikipedia.org/wiki/Apple_Inc.
-1977,thailand,2,แผลเก่า เวอร์ชันสรพงศ์ชาตรี,,https://th.wikipedia.org/wiki/%E0%B9%81%E0%B8%9C%E0%B8%A5%E0%B9%80%E0%B8%81%E0%B9%88%E0%B8%B2
-1977,world,3,ภาพยนตร์เรื่อง Star Wars ออกฉาย,star wars.jpg,https://en.wikipedia.org/wiki/Star_Wars_(film)
+1973,thailand,1,เหตุการณ์ 14 ตุลา,14 Oct.jpg,https://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%93%E0%B9%8C_14_%E0%B8%95%E0%B8%B8%E0%B8%A5%E0%B8%B2
+1974,world,1,ริชาร์ด นิกสัน ลาออกจากการเป็นประธานาธิบดี,nixon quit.jpg,https://en.wikipedia.org/wiki/Richard_Nixon
+1975,world,3,กลุ่มเขมรแดงขึ้นสู่อำนาจ,khmer rouge.svg,https://en.wikipedia.org/wiki/Khmer_Rouge
+1975,world,4,กลุ่มปะเทดลาวขึ้นสู่อำนาจ,pathet lao.jpg,https://en.wikipedia.org/wiki/Pathet_Lao
+1975,world,1,กองทัพเวียดนามเหนือยึดไซ่ง่อน สิ้นสุดสงครามเวียดนาม,end vietnam war.jpg,https://en.wikipedia.org/wiki/Fall_of_Saigon
+1975,world,2,Microsoft ก่อตั้ง,microsoft.png,https://en.wikipedia.org/wiki/Microsoft
+1976,thailand,1,เหตุการณ์ 6 ตุลา,unlicensed 6 oct.jpg,https://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%93%E0%B9%8C_6_%E0%B8%95%E0%B8%B8%E0%B8%A5%E0%B8%B2
+1976,world,2,Apple Inc ก่อตั้ง,apple.png,https://en.wikipedia.org/wiki/Apple_Inc.
+1977,thailand,2,ภาพยนตร์ แผลเก่า กำกับโดยเชิด ทรงศรี ออกฉาย,unlicensed old scar.jpg,https://th.wikipedia.org/wiki/%E0%B9%81%E0%B8%9C%E0%B8%A5%E0%B9%80%E0%B8%81%E0%B9%88%E0%B8%B2
+1977,world,3,ภาพยนตร์ Star Wars ออกฉาย,star wars.jpg,https://en.wikipedia.org/wiki/Star_Wars_(film)
 1977,world,1,เตี้งเสี่ยวผิงขึ้นสู่อำนาจ จีนเปิดประเทศ,Deng Xiaoping.jpg,https://en.wikipedia.org/wiki/Deng_Xiaoping
-1978,thailand,2,ก่อตั้ั้ง CPF ,,https://en.wikipedia.org/wiki/Charoen_Pokphand_Foods
+1978,thailand,2,CPF ก่อตั้ง,CPF.png,https://en.wikipedia.org/wiki/Charoen_Pokphand_Foods
 1979,world,3,มาร์กาเร็ต แธตเชอร์ เป็นนายกรัฐมนตรี,margaret thatcher.jpg,https://en.wikipedia.org/wiki/Margaret_Thatcher
-1981,thailand,2,ก่อตั้ง the Mall Group ห้างแห่งแรกของไทย บนถนนราชดำริ,,https://en.wikipedia.org/wiki/The_Mall_Group
-1981,thailand,5,ี้่ร้านอาหาร Inter ที่สยามเปิดให้บริการ,,https://www.wongnai.com/reviews/6beb02ace7d347cc9e46a8a31aba7827
+1980,thailand,1,ช่อง 9 การ์ตูนเริ่มฉาย,modern 9.jpg,https://th.wikipedia.org/wiki/%E0%B8%8A%E0%B9%88%E0%B8%AD%E0%B8%87_9_%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%95%E0%B8%B9%E0%B8%99
+1981,thailand,2,the Mall Group เปิดห้างแห่งแรกของไทย บนถนนราชดำริ,the mall.jpg,https://en.wikipedia.org/wiki/The_Mall_Group
+1981,thailand,4,ร้านอาหาร Inter ที่สยามเปิดให้บริการ,unlicensed inter restaurant.jpg,https://www.wongnai.com/reviews/6beb02ace7d347cc9e46a8a31aba7827
 1981,world,3,โรนัลด์ รีแกน เป็นประธานาธิบดี,ronald reagan.jpg,https://en.wikipedia.org/wiki/Ronald_Reagan
-1982,thailand,2,Central Group มีห้างแห่งแรกที่ลาดพร้าว,,https://en.wikipedia.org/wiki/CentralPlaza_Lardprao
-1982,thailand,4,สาว สาว สาว ออกอัลบั้มแรก,,https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%B2%E0%B8%A7_%E0%B8%AA%E0%B8%B2%E0%B8%A7_%E0%B8%AA%E0%B8%B2%E0%B8%A7
-1984,thailand,2,ก่อตั้งแกรมมี ดังเป็นพลุแตกจากอัลบั้มแรกของเต๋อเรวัตกับคาราบาว,,https://th.wikipedia.org/wiki/%E0%B8%88%E0%B8%B5%E0%B9%80%E0%B8%AD%E0%B9%87%E0%B8%A1%E0%B9%80%E0%B8%AD%E0%B9%87%E0%B8%A1_%E0%B9%81%E0%B8%81%E0%B8%A3%E0%B8%A1%E0%B8%A1%E0%B8%B5%E0%B9%88
+1982,thailand,2,Central Group เปิดห้างแห่งแรกที่ลาดพร้าว,central ladprao.jpg,https://en.wikipedia.org/wiki/CentralPlaza_Lardprao
+1982,thailand,3,สาว สาว สาวออกอัลบั้มแรก,sao sao sao.jpg,https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%B2%E0%B8%A7_%E0%B8%AA%E0%B8%B2%E0%B8%A7_%E0%B8%AA%E0%B8%B2%E0%B8%A7
+1984,thailand,2,Grammy ประสบความสำเร็จจากอัลบั้มของเต๋อ เรวัตกับคาราบาว,gmm grammy.png,https://th.wikipedia.org/wiki/%E0%B8%88%E0%B8%B5%E0%B9%80%E0%B8%AD%E0%B9%87%E0%B8%A1%E0%B9%80%E0%B8%AD%E0%B9%87%E0%B8%A1_%E0%B9%81%E0%B8%81%E0%B8%A3%E0%B8%A1%E0%B8%A1%E0%B8%B5%E0%B9%88
 1984,world,3,คอมพิวเตอร์ส่วนตัวเครื่องแรกวางขาย,macintosh.png,https://en.wikipedia.org/wiki/Macintosh
-1985,thailand,5,แมคโดนัลด์สาขาแรกในไทย,,
+1985,thailand,4,แมคโดนัลด์เปิดสาขาแรกในไทย,unlicensed mcdonald.jpg,
 1985,world,5,Super Mario เกมแรกวางขาย,super mario.png,https://en.wikipedia.org/wiki/Super_Mario
-1986,thailand,4,พี่เบิร์ดปล่อยอัลบั้มแรก หาดทรายสายลมสองเรา,,https://en.wikipedia.org/wiki/Thongchai_McIntyre
-1986,thailand,3,"อัสนี วสันต์ ออกอัลบั้มแรก ""บ้าหอบฟาง""",,
-1986,world,2,ภัยพิบัติเชียร์โนบีล,Chernobyl Disaster.jpg,https://en.wikipedia.org/wiki/Chernobyl_disaster
-1989,thailand,3,เซเว่นแห่งแรกของไทย บนถนนพัฒน์พงศ์,,https://en.wikipedia.org/wiki/Charoen_Pokphand#7-Eleven
-1989,world,1,World Wide Web invented,www.png,https://en.wikipedia.org/wiki/World_Wide_Web
+1986,thailand,4,"เบิร์ด ธงไชยออกอัลบั้มแรก ""หาดทราย สายลม สองเรา""",bird tongchai.jpg,https://en.wikipedia.org/wiki/Thongchai_McIntyre
+1986,thailand,3,"อัสนี-วสันต์ออกอัลบั้มแรก ""บ้าหอบฟาง""",unlicensed assanee wasant.jpg,https://th.wikipedia.org/wiki/%E0%B8%AD%E0%B8%B1%E0%B8%AA%E0%B8%99%E0%B8%B5-%E0%B8%A7%E0%B8%AA%E0%B8%B1%E0%B8%99%E0%B8%95%E0%B9%8C
+1986,thailand,2,ประกาศใช้เหรียญ 5 บาท,5 baht.png,
+1986,world,1,ภัยพิบัติเชียร์โนบีล,Chernobyl Disaster.jpg,https://en.wikipedia.org/wiki/Chernobyl_disaster
+1987,thailand,2,สะพานพระราม 9 เปิดให้บริการ,rama 9 bridge.jpg,https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%B0%E0%B8%9E%E0%B8%B2%E0%B8%99%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A3%E0%B8%B2%E0%B8%A1_9
+1988,thailand,1,ประกาศใช้เหรียญ 10 บาท,10 baht.png,
+1989,thailand,4,7-Eleven เปิดสาขาแรกในไทยบนถนนพัฒน์พงศ์,unlicensed 7-11.jpg,https://en.wikipedia.org/wiki/Charoen_Pokphand#7-Eleven
+1989,world,1,World Wide Web ถือกำเนิด,www.png,https://en.wikipedia.org/wiki/World_Wide_Web
 1989,world,2,การประท้วงที่จัตุรัสเทียนอันเหมิน,tiananmen sq protest.jpg,https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests
+1989,world,3,อองซานซูจีถูกกักบริเวณในบ้าน,aung san.jpg,https://en.wikipedia.org/wiki/Aung_San_Suu_Kyi
 1990,world,1,ทลายกำแพงเบอร์ลิน สิ้นสุดสงครามเย็น,berlin wall.jpg,https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall
-1991,world,3,สหภาพโซเวียตล่มสลาย,dissolution of ussr.png,https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union
-1991,world,5,ไมเคิลจอร์แดนพา Chicago Bulls ชนะ NBA ครั้งแรก,michael jordan.jpg,https://en.wikipedia.org/wiki/Michael_Jordan
-1992,thailand,1,พฤษภาทมิฬ,,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A4%E0%B8%A9%E0%B8%A0%E0%B8%B2%E0%B8%97%E0%B8%A1%E0%B8%B4%E0%B8%AC
-1993,thailand,4,เจเจตรินออกอัลบั้ม 108-1009 (ยุ่งน่า ก็ใครมันจะไปรู้ล่ะ ประมาณนี้หรือเปล่า คาใจ),,https://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%88%E0%B8%95%E0%B8%A3%E0%B8%B4%E0%B8%99_%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%98%E0%B8%99%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%99#%E0%B8%9C%E0%B8%A5%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%87
+1991,world,2,สหภาพโซเวียตล่มสลาย,dissolution of ussr.png,https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union
+1991,world,3,ไมเคิลจอร์แดนพา Chicago Bulls ชนะ NBA ครั้งแรก,michael jordan.jpg,https://en.wikipedia.org/wiki/Michael_Jordan
+1992,thailand,1,พฤษภาทมิฬ,black may.jpg,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A4%E0%B8%A9%E0%B8%A0%E0%B8%B2%E0%B8%97%E0%B8%A1%E0%B8%B4%E0%B8%AC
+1993,thailand,3,เจเจตรินออกอัลบั้ม 108-1009 (คาใจ ก็ใครมันจะไปรู้ล่ะ ประมาณนี้หรือเปล่า),unlicensed jetrin.jpg,https://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%88%E0%B8%95%E0%B8%A3%E0%B8%B4%E0%B8%99_%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%98%E0%B8%99%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%99#%E0%B8%9C%E0%B8%A5%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%87
 1993,world,2,สหภาพยุโรปก่อตั้ง,eu.png,https://en.wikipedia.org/wiki/European_Union
 1994,world,1,เนลสัน เมนเดลา เป็นประธานาธิบดี,mendela.jpg,https://en.wikipedia.org/wiki/Nelson_Mandela
-1995,thailand,1,น้ำท่วมใหญ่,,https://th.wikipedia.org/wiki/%E0%B8%AD%E0%B8%B8%E0%B8%97%E0%B8%81%E0%B8%A0%E0%B8%B1%E0%B8%A2%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2538
-1995,world,4,ภาพยนตร์เรื่อง Toy Story ออกฉาย,toy story.png,https://en.wikipedia.org/wiki/Toy_Story
-1996,thailand,4,สมรักษ์ คำสิงห์ ได้เหรียญทองโอลิมปิกเหรียญแรกของไทย,,
+1995,thailand,1,น้ำท่วมใหญ่,flood 1995.jpg,https://th.wikipedia.org/wiki/%E0%B8%AD%E0%B8%B8%E0%B8%97%E0%B8%81%E0%B8%A0%E0%B8%B1%E0%B8%A2%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2538
+1995,world,2,ภาพยนตร์ Toy Story ออกฉาย,toy story.png,https://en.wikipedia.org/wiki/Toy_Story
+1996,thailand,4,สมรักษ์ คำสิงห์ ได้เหรียญทองโอลิมปิกเหรียญแรกของไทย,unlicensed somrak.jpg,https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%A1%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B9%8C_%E0%B8%84%E0%B8%B3%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C
 1996,world,5,Pokemon เกมแรกวางขาย,pokemon.png,https://en.wikipedia.org/wiki/Pok%C3%A9mon_Red_and_Blue
 1997,world,1,วิกฤติการณ์ต้มยำกุ้ง,asian financial crisis.png,https://th.wikipedia.org/wiki/%E0%B8%A7%E0%B8%B4%E0%B8%81%E0%B8%A4%E0%B8%95%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%93%E0%B9%8C%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%87%E0%B8%B4%E0%B8%99%E0%B9%83%E0%B8%99%E0%B9%80%E0%B8%AD%E0%B9%80%E0%B8%8A%E0%B8%B5%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2540
 1997,world,2,เจ้าหญิงไดอานาสิ้นพระชนม์,princess diana.jpg,"https://en.wikipedia.org/wiki/Death_of_Diana,_Princess_of_Wales"
-1997,world,2,สหราชอาณาจักรคืนฮ่องกงให้จีน,hk handover.jpg,https://en.wikipedia.org/wiki/Hong_Kong_handover_ceremony
+1997,world,3,สหราชอาณาจักรคืนฮ่องกงให้จีน,hk handover.jpg,https://en.wikipedia.org/wiki/Hong_Kong_handover_ceremony
 1997,world,4,Harry Potter เล่มแรกวางขาย,harry potter.jpg,https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone
-1998,world,1,บริษัทกูเกิลก่อตั้ง,google.png,https://en.wikipedia.org/wiki/Google
-1999,thailand,2,รถไฟฟ้า BTS เปิดให้บริการ,,
-2000,thailand,3,นิตยสารอะเดย์เล่มแรก,,
-2001,thailand,2,ทักษิณเป็นนายก,,https://th.wikipedia.org/wiki/%E0%B8%97%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%B4%E0%B8%93_%E0%B8%8A%E0%B8%B4%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%A3#%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B8%A3%E0%B8%87%E0%B8%95%E0%B8%B3%E0%B9%81%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%87%E0%B8%99%E0%B8%B2%E0%B8%A2%E0%B8%81%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%A1%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B8%B5
-2001,thailand,4,สุริโยไทออกฉาย,,https://th.m.wikipedia.org/wiki/%E0%B8%AA%E0%B8%B8%E0%B8%A3%E0%B8%B4%E0%B9%82%E0%B8%A2%E0%B9%84%E0%B8%97
+1998,thailand,2,พรรคไทยรักไทยก่อตั้ง,thairakthai.png,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%84%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B9%84%E0%B8%97%E0%B8%A2
+1998,world,1,Google ก่อตั้ง,google.png,https://en.wikipedia.org/wiki/Google
+1999,thailand,2,รถไฟฟ้า BTS สายแรกเปิดให้บริการ,bts.png,https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%96%E0%B9%84%E0%B8%9F%E0%B8%9F%E0%B9%89%E0%B8%B2%E0%B8%9A%E0%B8%B5%E0%B8%97%E0%B8%B5%E0%B9%80%E0%B8%AD%E0%B8%AA
+2000,thailand,3,นิตยสารอะเดย์เล่มแรกวางขาย,a day.jpg,https://th.wikipedia.org/wiki/%E0%B8%AD%E0%B8%B0%E0%B9%80%E0%B8%94%E0%B8%A2%E0%B9%8C
+2001,thailand,2,ทักษิณ ชินวัตร เป็นนายกรัฐมนตรี,thaksin.jpg,https://th.wikipedia.org/wiki/%E0%B8%97%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%B4%E0%B8%93_%E0%B8%8A%E0%B8%B4%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%A3#%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B3%E0%B8%A3%E0%B8%87%E0%B8%95%E0%B8%B3%E0%B9%81%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%87%E0%B8%99%E0%B8%B2%E0%B8%A2%E0%B8%81%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%A1%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B8%B5
+2001,thailand,3,ภาพยนตร์ สุริโยไท ออกฉาย,suriyothai.jpg,https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%B8%E0%B8%A3%E0%B8%B4%E0%B9%82%E0%B8%A2%E0%B9%84%E0%B8%97
 2001,world,1,เครื่องบินพุ่งชนตึกเวิร์ลเทรดเซ็นเตอร์,911.jpg,https://en.wikipedia.org/wiki/9/11
-2003,world,1,Facebook ถิอกำเนิด,facebook.jpg,https://en.wikipedia.org/wiki/Facebook
+2001,world,2,เนเธอร์แลนด์ทำให้สมรสเพศเดียวกันถูกกฏหมายเป็นชาติแรกในโลก,lgbt.png,https://en.wikipedia.org/wiki/Same-sex_marriage#Legal_recognition
+2003,world,1,Facebook ถือกำเนิด,facebook.jpg,https://en.wikipedia.org/wiki/Facebook
 2003,world,2,ไวรัส SARS แพร่ระบาด,sars.gif,https://en.wikipedia.org/wiki/Facebook
-2004,thailand,3,พันธมิตร (เสื้อเหลือง) ก่อตั้ง,,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%97%E0%B9%89%E0%B8%A7%E0%B8%87%E0%B8%82%E0%B8%B1%E0%B8%9A%E0%B8%97%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%B4%E0%B8%93_%E0%B8%8A%E0%B8%B4%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%A3%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B8%88%E0%B8%B2%E0%B8%81%E0%B8%95%E0%B8%B3%E0%B9%81%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%87
-2004,thailand,1,สึนามิ,,
-2004,thailand,1,ไข้หวัดนก,,https://th.wikipedia.org/wiki/%E0%B9%84%E0%B8%82%E0%B9%89%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B8%81
-2005,thailand,2,บอดี้สแลมออกอัลบั้มบีลีฟ (ขอบฟ้า ความรักทำให้คนตาบอด คนที่ถูกรัก ความเชื่อ),,https://th.wikipedia.org/wiki/%E0%B8%9A%E0%B8%AD%E0%B8%94%E0%B8%B5%E0%B9%89%E0%B8%AA%E0%B9%81%E0%B8%A5%E0%B8%A1#%E0%B8%AD%E0%B8%B1%E0%B8%A5%E0%B8%9A%E0%B8%B1%E0%B9%89%E0%B8%A1_%E0%B8%9A%E0%B8%B5%E0%B8%A5%E0%B8%B5%E0%B8%9F_(%E0%B8%9E.%E0%B8%A8._2548%E2%80%932549)
-2005,thailand,4,สยามพารากอนเปิดให้บริการ,,https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%A2%E0%B8%B2%E0%B8%A1%E0%B8%9E%E0%B8%B2%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B8%AD%E0%B8%99
-2006,thailand,1,รัฐประหาร โดยคมช. (ไล่ทักษิณ),,https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2549
-2006,thailand,2,เปิดสนามบินสุวรรณภูมิ,,
-2006,thailand,4,พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี,,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%9E%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%89%E0%B8%A5%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B4%E0%B8%A3%E0%B8%B4%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%AA%E0%B8%A1%E0%B8%9A%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%84%E0%B8%A3%E0%B8%9A_60_%E0%B8%9B%E0%B8%B5
+2004,thailand,3,พันธมิตร (เสื้อเหลือง) ก่อตั้ง,yellow shirt.jpg,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%97%E0%B9%89%E0%B8%A7%E0%B8%87%E0%B8%82%E0%B8%B1%E0%B8%9A%E0%B8%97%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%B4%E0%B8%93_%E0%B8%8A%E0%B8%B4%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%A3%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B8%88%E0%B8%B2%E0%B8%81%E0%B8%95%E0%B8%B3%E0%B9%81%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%87
+2004,thailand,1,สึนามิในไทย,tsunami.jpg,https://th.wikipedia.org/wiki/%E0%B9%81%E0%B8%9C%E0%B9%88%E0%B8%99%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%84%E0%B8%AB%E0%B8%A7%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B8%AA%E0%B8%B6%E0%B8%99%E0%B8%B2%E0%B8%A1%E0%B8%B4%E0%B9%83%E0%B8%99%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%AA%E0%B8%A1%E0%B8%B8%E0%B8%97%E0%B8%A3%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%94%E0%B8%B5%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2547
+2004,thailand,2,ไข้หวัดนกระบาดเข้าสู่ไทย,bird flu.jpg,https://th.wikipedia.org/wiki/%E0%B9%84%E0%B8%82%E0%B9%89%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B8%81
+2005,thailand,2,บอดี้สแลมออกอัลบั้มบีลีฟ (ความรักทำให้คนตาบอด คนที่ถูกรัก ความเชื่อ),bodyslam.jpg,https://th.wikipedia.org/wiki/%E0%B8%9A%E0%B8%AD%E0%B8%94%E0%B8%B5%E0%B9%89%E0%B8%AA%E0%B9%81%E0%B8%A5%E0%B8%A1#%E0%B8%AD%E0%B8%B1%E0%B8%A5%E0%B8%9A%E0%B8%B1%E0%B9%89%E0%B8%A1_%E0%B8%9A%E0%B8%B5%E0%B8%A5%E0%B8%B5%E0%B8%9F_(%E0%B8%9E.%E0%B8%A8._2548%E2%80%932549)
+2005,thailand,3,สยามพารากอนเปิดให้บริการ,siam paragon.jpg,https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%A2%E0%B8%B2%E0%B8%A1%E0%B8%9E%E0%B8%B2%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B8%AD%E0%B8%99
+2006,thailand,1,รัฐประหารโดยคปค. โค่นทักษิณ,unlicensed coup 2006.jpg,https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2549
+2006,thailand,2,ท่าอากาศยานสุวรรณภูมิเปิดให้บริการ,Suvarnabhumi Airport.jpg,https://th.wikipedia.org/wiki/%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B8%A2%E0%B8%B2%E0%B8%99%E0%B8%AA%E0%B8%B8%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%93%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4
+2006,thailand,3,พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี รัชกาลที่ 9,rama ix 60 years.jpg,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%9E%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%89%E0%B8%A5%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B4%E0%B8%A3%E0%B8%B4%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%AA%E0%B8%A1%E0%B8%9A%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%84%E0%B8%A3%E0%B8%9A_60_%E0%B8%9B%E0%B8%B5
 2006,world,4,สารคดี An Inconvenient Truth ออกฉาย,an inconvenient truth.jpg,https://en.wikipedia.org/wiki/An_Inconvenient_Truth
-2007,thailand,3,นปช. (เสื้อแดง) ก่อตั้ง,,https://th.wikipedia.org/wiki/%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%A3%E0%B9%88%E0%B8%A7%E0%B8%A1%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B2%E0%B8%98%E0%B8%B4%E0%B8%9B%E0%B9%84%E0%B8%95%E0%B8%A2%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%95%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B9%80%E0%B8%9C%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%AB%E0%B9%88%E0%B8%87%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%B4
-2007,thailand,5,หนังพระนเรศวรภาคแรก,,https://en.wikipedia.org/wiki/King_Naresuan_%28film%29
+2007,thailand,3,นปก. (เสื้อแดง ภายหลังชื่อนปช.) ก่อตั้ง,red shirt.jpg,https://th.wikipedia.org/wiki/%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%A3%E0%B9%88%E0%B8%A7%E0%B8%A1%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B2%E0%B8%98%E0%B8%B4%E0%B8%9B%E0%B9%84%E0%B8%95%E0%B8%A2%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%95%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B9%80%E0%B8%9C%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%AB%E0%B9%88%E0%B8%87%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%B4
+2007,thailand,5,ภาพยนตร์ชุดตำนานสมเด็จพระนเรศวรมหาราชภาคแรกออกฉาย,naresuan.jpeg,https://en.wikipedia.org/wiki/King_Naresuan_%28film%29
 2007,world,4,iPhone รุ่นแรกวางขาย,iphone.jpg,https://en.wikipedia.org/wiki/IPhone_(1st_generation)
-2008,thailand,2,BACC เปิด,,https://en.wikipedia.org/wiki/Bangkok_Art_and_Culture_Centre
+2008,thailand,2,BACC เปิดให้บริการ,bacc.jpg,https://en.wikipedia.org/wiki/Bangkok_Art_and_Culture_Centre
 2008,world,1,ฟองสบู่อสังหาริมทรัพย์แตก วิกฤติการณ์เศรษฐกิจ,housing market bubble.png,https://en.wikipedia.org/wiki/Financial_crisis_of_2007%E2%80%932008
 2008,world,3,ปักกิ่งโอลิมปิกส์,Beijing Olympics.png,https://en.wikipedia.org/wiki/2008_Summer_Olympics
-2008,world,5,ภาพยนตร์เรื่อง Iron Man ออกฉาย,iron man.jpg,https://en.wikipedia.org/wiki/Iron_Man_(2008_film)
+2008,world,4,ภาพยนตร์ Iron Man ออกฉาย,iron man.jpg,https://en.wikipedia.org/wiki/Iron_Man_(2008_film)
 2009,world,1,บารัค โอบามา ขึ้นเป็นประธานาธิบดี,obama.jpg,https://en.wikipedia.org/wiki/Barack_Obama
-2010,thailand,1,เผากรุงเทพ,,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B8%99%E0%B8%B8%E0%B8%A1%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%A3%E0%B9%88%E0%B8%A7%E0%B8%A1%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B2%E0%B8%98%E0%B8%B4%E0%B8%9B%E0%B9%84%E0%B8%95%E0%B8%A2%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%95%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B9%80%E0%B8%9C%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%AB%E0%B9%88%E0%B8%87%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%B4_%E0%B8%9E.%E0%B8%A8._2553
+2010,thailand,1,นปช. (เสื้อแดง) ชุมนุมใหญ่,red shirt protest.jpg,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B8%99%E0%B8%B8%E0%B8%A1%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%A3%E0%B9%88%E0%B8%A7%E0%B8%A1%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B2%E0%B8%98%E0%B8%B4%E0%B8%9B%E0%B9%84%E0%B8%95%E0%B8%A2%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%95%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B9%80%E0%B8%9C%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%AB%E0%B9%88%E0%B8%87%E0%B8%8A%E0%B8%B2%E0%B8%95%E0%B8%B4_%E0%B8%9E.%E0%B8%A8._2553
 2010,world,2,การประท้วงในโลกอาหรับ (Arab Spring) เริ่มต้น,arab spring.png,https://en.wikipedia.org/wiki/Arab_Spring#Timeline
-2011,thailand,1,มหาอุทกภัย น้ำท่วมใหญ่กรุงเทพ,,https://th.wikipedia.org/wiki/%E0%B8%AD%E0%B8%B8%E0%B8%97%E0%B8%81%E0%B8%A0%E0%B8%B1%E0%B8%A2%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2554
-2011,world,4,สตีฟ จ็อบส์ เสียชีวิต,steve jobs.jpg,https://en.wikipedia.org/wiki/Steve_Jobs
-2012,thailand,4,การเสด็จออกมหาสมาคม 85 พรรษา,,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%AA%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%AA%E0%B8%A1%E0%B8%B2%E0%B8%84%E0%B8%A1%E0%B9%83%E0%B8%99%E0%B8%A3%E0%B8%B1%E0%B8%8A%E0%B8%81%E0%B8%B2%E0%B8%A5%E0%B8%97%E0%B8%B5%E0%B9%88_9
-2012,world,2,ภาพยนตร์เรื่อง The Avengers ออกฉาย,The Avengers.jpg,https://en.wikipedia.org/wiki/The_Avengers_(2012_film)
-2013,thailand,3,กปปส. ก่อตั้ง,,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%9B%E0%B8%9B%E0%B8%AA.
-2013,world,1,Snowden Leak,surveillance.jpg,https://en.wikipedia.org/wiki/Global_surveillance_disclosures_(2013%E2%80%93present)
+2011,thailand,1,"น้ำท่วมใหญ่ ""มหาอุทกภัย""",flood 2011.jpg,https://th.wikipedia.org/wiki/%E0%B8%AD%E0%B8%B8%E0%B8%97%E0%B8%81%E0%B8%A0%E0%B8%B1%E0%B8%A2%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2554
+2011,world,2,สตีฟ จ็อบส์ เสียชีวิต,steve jobs.jpg,https://en.wikipedia.org/wiki/Steve_Jobs
+2012,thailand,2,พระราชพิธีเฉลิมพระชนมพรรษา 85 พรรษา รัชกาลที่ 9,rama 9 public audience.png,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%AA%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%AA%E0%B8%A1%E0%B8%B2%E0%B8%84%E0%B8%A1%E0%B9%83%E0%B8%99%E0%B8%A3%E0%B8%B1%E0%B8%8A%E0%B8%81%E0%B8%B2%E0%B8%A5%E0%B8%97%E0%B8%B5%E0%B9%88_9
+2012,world,3,ภาพยนตร์ The Avengers ออกฉาย,The Avengers.jpg,https://en.wikipedia.org/wiki/The_Avengers_(2012_film)
+2013,world,1,เอ็ดเวิร์ด สโนวเดน ออกมาแฉเรื่องการสอดแนมข้อมูล,surveillance.jpg,https://en.wikipedia.org/wiki/Global_surveillance_disclosures_(2013%E2%80%93present)
 2013,world,2,#BlackLivesMatter เริ่มต้น,blm.png,https://en.wikipedia.org/wiki/Black_Lives_Matter
-2014,thailand,1,รัฐประหาร โดยคสช.,,https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2557
-2014,thailand,5,เริ่มดิจิทัลทีวี,,https://th.wikipedia.org/wiki/%E0%B9%82%E0%B8%97%E0%B8%A3%E0%B8%97%E0%B8%B1%E0%B8%A8%E0%B8%99%E0%B9%8C%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%9A%E0%B8%94%E0%B8%B4%E0%B8%88%E0%B8%B4%E0%B8%97%E0%B8%B1%E0%B8%A5%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2
-2015,world,4,Same-sex marriage legalized in the US,,
-2016,thailand,1,ร.9 สวรรคต,,
-2016,thailand,2,ร.10 ขึ้นครองราชย์,,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B2%E0%B8%97%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B9%80%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%AB%E0%B8%B1%E0%B8%A7#%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%9E%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%AA%E0%B8%A1%E0%B9%82%E0%B8%A0%E0%B8%8A%E0%B9%80%E0%B8%94%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%82%E0%B8%B6%E0%B9%89%E0%B8%99%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B9%E0%B9%88
-2016,world,1,โดนัลด์ ทรัมป์ เป็นประธานาธิบดี,Donald Trump.jpg,https://en.wikipedia.org/wiki/Donald_Trump
+2014,thailand,1,กปปส. ชุมนุุมใหญ่,pdrc.jpg,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%9B%E0%B8%9B%E0%B8%AA.
+2014,thailand,2,รัฐประหารโดยคสช.,prayuth.png,https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2557
+2014,thailand,3,ทีวีดิจิตัลในไทยเริ่มให้บริการ,unlicensed digital tv.jpg,https://th.wikipedia.org/wiki/%E0%B9%82%E0%B8%97%E0%B8%A3%E0%B8%97%E0%B8%B1%E0%B8%A8%E0%B8%99%E0%B9%8C%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%9A%E0%B8%94%E0%B8%B4%E0%B8%88%E0%B8%B4%E0%B8%97%E0%B8%B1%E0%B8%A5%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2
+2016,thailand,1,รัชกาลที่ 9 สวรรคต รัชกาลที่ 10 ทรงขึ้นครองราชสมบัติ,rama 10.png,
+2016,world,2,โดนัลด์ ทรัมป์ เป็นประธานาธิบดี,Donald Trump.jpg,https://en.wikipedia.org/wiki/Donald_Trump
 2016,world,3,การลงประชามติเรื่อง Brexit,brexit.png,https://en.wikipedia.org/wiki/2016_United_Kingdom_European_Union_membership_referendum
-2017,thailand,3,พี่ตูนวิ่ง,,https://th.wikipedia.org/wiki/%E0%B8%AD%E0%B8%B2%E0%B8%97%E0%B8%B4%E0%B8%A7%E0%B8%A3%E0%B8%B2%E0%B8%AB%E0%B9%8C_%E0%B8%84%E0%B8%87%E0%B8%A1%E0%B8%B2%E0%B8%A5%E0%B8%B1%E0%B8%A2
-2018,thailand,3,เกิดพรรคอนาคตใหม่,,
+2017,thailand,2,ก้าวคนละก้าวเพื่อ 11 โรงพยาบาลทั่วประเทศ โดยตูน บอดีแสลม,unlicensed toon run.jpg,https://th.wikipedia.org/wiki/%E0%B8%AD%E0%B8%B2%E0%B8%97%E0%B8%B4%E0%B8%A7%E0%B8%A3%E0%B8%B2%E0%B8%AB%E0%B9%8C_%E0%B8%84%E0%B8%87%E0%B8%A1%E0%B8%B2%E0%B8%A5%E0%B8%B1%E0%B8%A2
+2017,world,3,Fortnite วางขาย,fortnite.svg,https://en.wikipedia.org/wiki/Fortnite
+2018,thailand,3,พรรคอนาคตใหม่ก่อตั้ง,FWP.png,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%84%E0%B8%AD%E0%B8%99%E0%B8%B2%E0%B8%84%E0%B8%95%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88
 2018,world,2,#MeToo ไวรัลบนโซเชียลมีเดีย,metoo.jpg,https://en.wikipedia.org/wiki/Me_Too_movement?wprov=srpw1_0
 2018,world,1,สงครามการค้าจีน-สหรัฐเริ่มต้น,china us trade war.jpg,https://en.wikipedia.org/wiki/China%E2%80%93United_States_trade_war
-2019,thailand,4,บรมราชาภิเษก ร.10,,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B2%E0%B8%97%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B9%80%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%AB%E0%B8%B1%E0%B8%A7#%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%9E%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%AA%E0%B8%A1%E0%B9%82%E0%B8%A0%E0%B8%8A%E0%B9%80%E0%B8%94%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%82%E0%B8%B6%E0%B9%89%E0%B8%99%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B9%E0%B9%88
+2019,thailand,3,พระราชพิธีบรมราชาภิเษกรัชกาลที่ 10,rama 10 throne.jpg,https://th.wikipedia.org/wiki/%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B2%E0%B8%97%E0%B8%AA%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B9%87%E0%B8%88%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A7%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B9%80%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%AB%E0%B8%B1%E0%B8%A7#%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%9E%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%AA%E0%B8%A1%E0%B9%82%E0%B8%A0%E0%B8%8A%E0%B9%80%E0%B8%94%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%82%E0%B8%B6%E0%B9%89%E0%B8%99%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B9%E0%B9%88
 2019,world,4,"สุนทรพจน์ ""กล้าดียังไง?"" ของเกรียตา ทืนแบร์ย",greta thunberg.jpg,https://en.wikipedia.org/wiki/Greta_Thunberg
-2019,world,3,การประท้วงที่ฮ่องกงเริ่มต้น,hk protest.jpg,https://en.wikipedia.org/wiki/2019%E2%80%9320_Hong_Kong_protests
-2020,thailand,2,ชุมนุมใหญ่ประชาชนปลดแอก,,
+2019,world,2,ไต้หวันทำให้สมรสเพศเดียวกันถูกกฏหมายเป็นชาติแรกในเอเชีย,taiwan same sex marriage.jpg,https://en.wikipedia.org/wiki/Same-sex_marriage_in_Taiwan
+2019,world,1,การประท้วงที่ฮ่องกงเริ่มต้น,hk protest.jpg,https://en.wikipedia.org/wiki/2019%E2%80%9320_Hong_Kong_protests
+2020,thailand,2,การประท้วงใหญ่ของราษฎร,2020 protest.jpg,https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%97%E0%B9%89%E0%B8%A7%E0%B8%87%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2_%E0%B8%9E.%E0%B8%A8._2563
 2020,world,1,ไวรัส COVID-19 แพร่ระบาด,covid.jpg,https://en.wikipedia.org/wiki/COVID-19_pandemic

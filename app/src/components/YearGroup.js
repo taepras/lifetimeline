@@ -1,10 +1,22 @@
 import { max } from "d3";
 import styled from "styled-components";
 import Config, { Utils } from "../config/Config";
+import Theme from "../config/Theme";
 import EventBubble from "./EventBubble";
 
 const StyledYearGroup = styled.div`
   position: absolute;
+`;
+
+const YearNumber = styled.div`
+  position: absolute;
+  top:32px;
+  left: ${Theme.spacing.x1 * 4.5}px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: ${Theme.spacing.xs}px;
+  background-color: ${({ isBorn }) => (isBorn ? "#DED8C9" : "#161514")};
+  transition: 0.5s all;
 `;
 
 function YearGroup({
@@ -17,6 +29,7 @@ function YearGroup({
   className,
   children,
   style,
+  isBorn,
   smoothTransition = true,
   onDialogOpen = (event) => {},
   onCollapsedClick = (event) => {},
@@ -40,7 +53,10 @@ function YearGroup({
         transition: smoothTransition ? "0.3s all" : "none",
       }}
     >
-      {Utils.typeYear(year, yearMode)} | {+year - +birthYear} ปี
+      <YearNumber isBorn={isBorn}>
+        {Utils.typeYear(year, yearMode)} 
+      </YearNumber>
+      {/* | {+year - +birthYear} ปี */}
       {data.events.map((event, index) => (
         <EventBubble
           y={getBubbleYPosition(index)}

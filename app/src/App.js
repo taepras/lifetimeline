@@ -31,7 +31,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div id="app" className="App">
       <GlobalStyle />
 
       {appMode == "home" && (

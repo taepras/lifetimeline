@@ -8,7 +8,7 @@ const StyledMenuBar = styled.div`
   bottom: 0;
   right: 0;
   height: 80px;
-  background: linear-gradient(180deg, rgba(56, 53, 49, 0) 0%, #383531 100%);
+  background: linear-gradient(180deg, #38353100 0%, #383531ff 100%);
   z-index: 100;
 `;
 

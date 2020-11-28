@@ -186,9 +186,17 @@ function EventDialog({
         <EventDescription eventType={type}>
           <h2>{data.type == "birthyear" ? data.name : data.event}</h2>
           <p>
-            {Utils.typeYear(year, yearMode, true)}
+            {Utils.typeYear(year, yearMode, true)} {data.type == "birthyear" &&
+              `- ปีนี้อายุ ${new Date().getFullYear() - year} ปี`}
             <br />
-            ตอนที่เด็กสมัย {birthYear} มีอายุ {year - birthYear} ปี
+            {data.type != "birthyear" && (
+              <>
+                {year - birthYear > 0 &&
+                  `ตอนที่เด็กสมัย ${birthYear} มีอายุ ${year - birthYear} ปี`}
+                {year - birthYear < 0 &&
+                  `ก่อนเด็กสมัย ${birthYear} เกิด ${year - birthYear} ปี`}
+              </>
+            )}
           </p>
           <Button className="mt-1" block outlined>
             อ่านเพิ่มเติมเกี่ยวกับเหตุการณ์นี้

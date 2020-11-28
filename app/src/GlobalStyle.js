@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import Theme from './config/Theme'
+import { createGlobalStyle } from "styled-components";
+import Theme from "./config/Theme";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -8,29 +8,36 @@ const GlobalStyle = createGlobalStyle`
     background-attachment: fixed;
     background-repeat: no-repeat;
 
-    background: 
-    /* radial-gradient(
+    background-color: #DED8C9;
+    color: #333;
+    /* background: 
+    radial-gradient(
         100% 60% at 50% 45%, 
         rgba(137, 130, 119, 0) 30%, 
         rgba(85, 80, 72, 0.57) 85%, 
         rgba(85, 80, 72, 0.75) 100%
-      ),  */
-      #DED8C9;
+      ), 
+      #DED8C9; */
     background-blend-mode: normal, normal;
-
-    font-family: thonglor;
-    font-size: 20px;
-  }
-
-  body::after {
-    content: " ";
-    background: 
-      radial-gradient(
-        100% 60% at 50% 45%, 
-        rgba(137, 130, 119, 0) 30%, 
-        rgba(85, 80, 72, 0.57) 85%, 
-        rgba(85, 80, 72, 0.75) 100%
-      );
+    
+    &::after {
+      content: " ";
+      background: 
+      ${({ isBorn }) => (isBorn ? 
+        `radial-gradient(
+          100% 60% at 50% 45%, 
+          rgba(85, 80, 72, 0) 30%, 
+          rgba(85, 80, 72, 0.4) 85%, 
+          rgba(85, 80, 72, 0.6) 100%
+        );`
+        :
+        `radial-gradient(
+          100% 60% at 50% 45%, 
+          rgba(0, 0, 0, 0) 30%, 
+          rgba(0, 0, 0, 0.4) 85%, 
+          rgba(0, 0, 0, 0.6) 100%
+        );`
+      )}
       position: fixed;
       top: 0;
       left: 0;
@@ -38,6 +45,10 @@ const GlobalStyle = createGlobalStyle`
       bottom: 0;
       pointer-events: none;
       z-index: 0;
+    }
+
+    font-family: thonglor;
+    font-size: 20px;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -72,5 +83,5 @@ const GlobalStyle = createGlobalStyle`
   .text-left { text-align: left; }
   .text-right { text-align: right; }
 `;
- 
+
 export default GlobalStyle;

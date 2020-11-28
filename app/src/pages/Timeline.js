@@ -23,6 +23,56 @@ import lifeData from "../data/life.csv";
 
 import { zoom } from "d3";
 
+const TimelineContainer = styled(Container)`
+
+  color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};;
+  transition: 0.5s all;
+
+  background-color: #DED8C9;
+
+  &::before {
+    content: " ";
+    background-color: ${({ isBorn }) => (isBorn ? "#DED8C9" : "#161514")};
+    color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: 0.5s all;
+  }
+  
+  &::after {
+    content: " ";
+    background: 
+    ${({ isBorn }) =>
+      isBorn
+        ? `radial-gradient(
+        100% 60% at 50% 45%, 
+        rgba(85, 80, 72, 0) 30%, 
+        rgba(85, 80, 72, 0.57) 85%, 
+        rgba(85, 80, 72, 0.75) 100%
+      );`
+        : `radial-gradient(
+        100% 60% at 50% 45%, 
+        rgba(0, 0, 0, 0) 30%, 
+        rgba(0, 0, 0, 0.57) 85%, 
+        rgba(0, 0, 0, 0.75) 100%
+      );`}
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    transition: 0.5s all;
+  }
+`;
+
 const Banner = styled.div`
   position: fixed;
   top: 0;
@@ -34,6 +84,7 @@ const Banner = styled.div`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
   border-radius: 0px 0px 8px 8px;
   z-index: 100;
+  color: #333;
 
   h1 {
     margin: 0;
@@ -55,6 +106,13 @@ const ZoomControls = styled.div`
   }
 `;
 
+const RefLineContainer = styled.div`
+  width: 100%;
+  position: fixed;
+  top: 50vh;
+  z-index: 100;
+`;
+
 const RefLine = styled.div`
   width: 100%;
   height: 4px;
@@ -62,6 +120,43 @@ const RefLine = styled.div`
   position: fixed;
   top: 50vh;
 `;
+
+const AgeBox = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${Theme.spacing.x1 * 9}px;
+  height: ${Theme.spacing.x1 * 7}px;
+  white-space: nowrap;
+  top: 0;
+  left: ${Theme.spacing.x2}px;
+  /* padding: 4px 8px; */
+  background-color: ${({ isBorn }) => (isBorn ? "#e4dfd3" : "#2c2b28")};
+  color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
+  border: ${Theme.spacing.xs}px solid #f005;
+  border-radius: ${Theme.spacing.x1}px;
+  /* border-radius: 50%; */
+  transform: translateY(-50%);
+  transition: 0.5s all;
+
+  /* width: 50px; */
+`;
+
+const Age = styled.div`
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -4px;
+`;
+
+const TimelineLine = styled.div`
+  position: absolute;
+  left: ${Theme.spacing.x2 + Theme.spacing.x1 * 4.5}px;
+  height: 100%;
+  width: 1px;
+
+  background-color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
+`
 
 const zoomExtent = [1, 5];
 
@@ -96,6 +191,10 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
   const [isNormalizingTransform, setNormalizingTransform] = useStateWithPromise(
     false
   );
+
+  const [yearAtRefLine, setYearAtRefLine] = useState(0);
+
+  const [lastDy, setLastDy] = useState(null);
 
   const scrollRange = useMemo(() => {
     let x = [
@@ -140,7 +239,7 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
       }
     }
 
-    console.log(eventsNestedTemp)
+    console.log(eventsNestedTemp);
 
     return eventsNestedTemp;
   };
@@ -163,21 +262,27 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
         e.preventDefault();
         window.scrollTo(0, scrollRange[1]);
       }
+
+      // console.log(transformedScaleY.invert(scrollOffset))
+      let scrollTop = document.documentElement.scrollTop;
+      let refLineBb = refLineEl.current
+        ? refLineEl.current.getBoundingClientRect()
+        : 0;
+      let offsetY = scrollTop + refLineBb.top;
+      setYearAtRefLine(Math.floor(transformedScaleY.invert(offsetY)));
     };
     setCurrentScrollListener(() => handleScroll);
     window.addEventListener("scroll", handleScroll, { passive: false });
   }, [scrollRange]);
 
-
   const setEventsNested = (newEventsNested) => {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       let eventsNestedTemp = clone(newEventsNested);
       eventsNestedTemp.forEach((e) => {
         e.y = transformedScaleY(e.year);
       });
-      _setEventsNested(eventsNestedTemp)
-        .then(resolve);
-    })
+      _setEventsNested(eventsNestedTemp).then(resolve);
+    });
   };
 
   const openDialog = (event) => {
@@ -204,29 +309,20 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
     let zoomCenterY = 0;
     if (centerY === null) {
       let scrollTop = document.documentElement.scrollTop;
-      let refLineBb = refLineEl.current.getBoundingClientRect();
+      let refLineBb = refLineEl.current
+        ? refLineEl.current.getBoundingClientRect()
+        : 0;
       zoomCenterY = scrollTop + refLineBb.top;
     } else {
       zoomCenterY = centerY;
     }
 
-    // let oldRefY = zoomCenterY;
-    // let newRefY = zoomCenterY * tempZoomLevel;
-    // let dyScroll = newRefY - oldRefY;
-    // let tempTransform = d3.zoomIdentity
-    // let tempTransform = transform
-    //   .translate(0, -zoomCenterY)
-    //   .scale(tempZoomLevel / transform.k);
-    let tempTransform = zoomAt(transform, zoomCenterY, tempZoomLevel / transform.k);
-    // .scale(tempZoomLevel);
-
-    console.log(tempTransform, zoomCenterY);
-
+    let tempTransform = zoomAt(
+      transform,
+      zoomCenterY,
+      tempZoomLevel / transform.k
+    );
     let tempScaleY = tempTransform.rescaleY(scaleY);
-
-    console.log(tempScaleY(2020))
-    console.log(tempScaleY(2021))
-    console.log(tempScaleY(2021) - tempScaleY(2020))
 
     setTransform(tempTransform);
     setTransformedScaleY(() => tempScaleY);
@@ -241,15 +337,7 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
   };
 
   useEffect(() => {
-    setEventsNested(eventsNested)
-    // .then(() => {
-    //   if (eventsNested[0]) {
-    //     console.log(eventsNested[0].y)
-    //     console.log(eventsNested[1].y)
-    //     console.log('>>', eventsNested[1].y - eventsNested[0].y)
-    //   }
-    // })
-
+    setEventsNested(eventsNested);
   }, [transformedScaleY]);
 
   useEffect(() => {
@@ -264,15 +352,67 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
       let celebrities = files[2];
 
       let eventsNestedTemp = preprocessData(events, celebrities);
-      setEventsNested(eventsNestedTemp)
-        .then(() => scrollToYear(birthYear));
+      setEventsNested(eventsNestedTemp).then(() => scrollToYear(birthYear));
     });
   }, []);
 
+  const onTouchMove = (e) => {
+    if (e.touches.length > 1) {
+      e.preventDefault();
+      e.nativeEvent.stopImmediatePropagation();
+
+      if (lastDy === null) {
+        setLastDy(e.touches[1].pageY - e.touches[0].pageY);
+        return;
+      }
+
+      let dy = e.touches[1].pageY - e.touches[0].pageY;
+      let yCenter = (e.touches[1].pageY + e.touches[0].pageY) / 2;
+
+      zoom(dy / lastDy - 1, yCenter);
+      setLastDy(dy);
+    }
+  };
+
+  const onTouchEnd = (e) => {
+    if (e.touches.length > 1) {
+      // isZooming = true;
+      e.preventDefault();
+      e.nativeEvent.stopImmediatePropagation();
+      setLastDy(null);
+    }
+  };
+
   return (
     <>
-      <RefLine ref={refLineEl}></RefLine>
-      <Container style={{ height: `${maxContainerHeight}px` }}>
+      <RefLineContainer>
+        <RefLine ref={refLineEl}></RefLine>
+        <Container style={{ position: "relative" }}>
+          <AgeBox isBorn={yearAtRefLine >= birthYear}>
+            {yearAtRefLine > birthYear ? (
+              <div style={{textAlign: 'center'}}>
+                อายุ<Age>{yearAtRefLine - birthYear} ปี</Age>
+              </div>
+            ) : yearAtRefLine < birthYear ? (
+              <div style={{textAlign: 'center'}}>
+                ก่อนเกิด<Age>{birthYear - yearAtRefLine} ปี</Age>
+              </div>
+            ) : (
+              `ปีแรกเกิด`
+            )}
+          </AgeBox>
+        </Container>
+      </RefLineContainer>
+      <TimelineContainer
+        isBorn={yearAtRefLine >= birthYear}
+        style={{ 
+          height: `${maxContainerHeight}px`,
+          position: 'relative' 
+        }}
+        onTouchEnd={onTouchEnd}
+        onTouchMove={onTouchMove}
+      >
+        <TimelineLine isBorn={yearAtRefLine >= birthYear} />
         <Banner>
           <h1 style={{ marginBottom: "0" }}>
             <div style={{ fontSize: "21px" }}>โลกในมุมมอง</div>
@@ -290,6 +430,7 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
             year={eventGroup.year}
             data={eventGroup}
             yearMode={yearMode}
+            isBorn={yearAtRefLine >= birthYear}
             birthYear={birthYear}
             y={eventGroup.y}
             onDialogOpen={openDialog}
@@ -303,7 +444,9 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
           open={isDialogOpen}
           setOpen={setDialogOpen}
           data={dialogData}
-          title={dialogData.type == "birthyear" ? dialogData.name : dialogData.event}
+          title={
+            dialogData.type == "birthyear" ? dialogData.name : dialogData.event
+          }
           year={dialogData.year}
           yearMode={yearMode}
           birthYear={birthYear}
@@ -314,7 +457,7 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
           <Button onClick={() => zoom(1)}>+</Button>
           <Button onClick={() => zoom(-1)}>-</Button>
         </ZoomControls>
-      </Container>
+      </TimelineContainer>
       <Dialog open={openYearChange} setOpen={setOpenYearChange}>
         <h2>เปลี่ยนปีเกิด</h2>
         <YearSelector onSubmit={handleYearChange} yearMode={yearMode} />
