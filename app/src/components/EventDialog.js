@@ -137,6 +137,7 @@ function EventDialog({
   setOpen = (open) => {},
   children,
   title,
+  data,
   type = "world",
   year,
   yearMode,
@@ -145,6 +146,20 @@ function EventDialog({
   onClick = () => {},
   onClose = () => {},
 }) {
+  const getTypeLabel = (type) => {
+    switch (type) {
+      case "thailand":
+        return "เหตุการณ์สำคัญไทย";
+        break;
+      case "world":
+        return "เหตุการณ์สำคัญโลก";
+        break;
+      case "birthyear":
+        return "ปีเกิดบุคคลสำคัญ";
+        break;
+    }
+  };
+
   return (
     <FadeOverlay
       open={open}
@@ -166,13 +181,14 @@ function EventDialog({
           style={{ backgroundImage: `url(/img/events/${image})` }}
           eventType={type}
         >
-          <EventIcon eventType={type}>⬤ เหตุการณ์สำคัญโลก</EventIcon>
+          <EventIcon eventType={type}>⬤ {getTypeLabel(data.type)}</EventIcon>
         </EventThumbnail>
         <EventDescription eventType={type}>
-          <h2>{title}</h2>
+          <h2>{data.type == "birthyear" ? data.name : data.event}</h2>
           <p>
-            {Utils.typeYear(year, yearMode, true)} - เด็กสมัย {birthYear} อายุ{" "}
-            {year - birthYear}} ปี
+            {Utils.typeYear(year, yearMode, true)}
+            <br />
+            ตอนที่เด็กสมัย {birthYear} มีอายุ {year - birthYear} ปี
           </p>
           <Button className="mt-1" block outlined>
             อ่านเพิ่มเติมเกี่ยวกับเหตุการณ์นี้

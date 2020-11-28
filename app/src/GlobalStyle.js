@@ -22,6 +22,24 @@ const GlobalStyle = createGlobalStyle`
     font-size: 20px;
   }
 
+  body::after {
+    content: " ";
+    background: 
+      radial-gradient(
+        100% 60% at 50% 45%, 
+        rgba(137, 130, 119, 0) 30%, 
+        rgba(85, 80, 72, 0.57) 85%, 
+        rgba(85, 80, 72, 0.75) 100%
+      );
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: anugrom;
     font-weight: normal;

@@ -16,8 +16,10 @@ function YearGroup({
   maxDisplay = 1,
   className,
   children,
+  style,
   smoothTransition = true,
   onDialogOpen = (event) => {},
+  onCollapsedClick = (event) => {},
 }) {
   // console.log("events", data.year, data);
   const getBubbleYPosition = (index) =>
@@ -33,6 +35,7 @@ function YearGroup({
   return (
     <StyledYearGroup
       style={{
+        // ...style,
         transform: `translateY(${y}px)`,
         transition: smoothTransition ? "0.3s all" : "none",
       }}
@@ -42,13 +45,14 @@ function YearGroup({
         <EventBubble
           y={getBubbleYPosition(index)}
           x={100 + getBubbleXPosition(index)}
-          title={event.event}
+          title={event.type == "birthyear" ? event.name : event.event}
           type={event.type}
           image={event.image}
           collapsed={index >= maxDisplay}
           z={10 - index}
           key={year + "-" + index}
           onClick={() => onDialogOpen(event)}
+          onCollapsedClick={(e)=> onCollapsedClick(e, event)}
         />
       ))}
     </StyledYearGroup>

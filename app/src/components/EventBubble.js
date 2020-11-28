@@ -26,15 +26,15 @@ const StyledEvent = styled.div`
   align-items: center;
   transform: translateY(-50%);
   position: ${({ relative }) => (relative ? "relative" : "absolute")};
-  z-index: ${({z}) => z};
+  z-index: ${({ z }) => z};
 
   transition: 0.3s all;
 `;
 
 const EventThumbnail = styled.div`
   width: 64px; //${({ collapsed }) => (collapsed ? "24px" : "64px")};
-  flex: 0 0 64px;//${({ collapsed }) => (collapsed ? "24px" : "64px")};
-  height: 64px;//${({ collapsed }) => (collapsed ? "24px" : "64px")};
+  flex: 0 0 64px; //${({ collapsed }) => (collapsed ? "24px" : "64px")};
+  height: 64px; //${({ collapsed }) => (collapsed ? "24px" : "64px")};
   ${({ collapsed }) => collapsed && `transform: scale(0.375);`}
   border-radius: ${({ eventType }) =>
     eventType == "birthyear" ? "50%" : "8px"};
@@ -90,11 +90,13 @@ function EventBubble({
   z,
   relative,
   collapsed = false,
+  onCollapsedClick = () => {}
 }) {
   return (
     <StyledEvent
-      onClick={() => {
+      onClick={(e) => {
         if (!collapsed) onClick();
+        else onCollapsedClick(e);
       }}
       relative={relative}
       style={{ transform: `translate(${x}px, ${y}px)` }}
@@ -110,10 +112,10 @@ function EventBubble({
       {!collapsed && (
         <EventDescription eventType={type}>
           {type == "birthyear" && (
-            <small style={{ opacity: 0.7 }}>
-              ปีเกิด
+            <>
+              <small style={{ opacity: 0.7 }}>ปีเกิด</small>
               <br />
-            </small>
+            </>
           )}
           {title}
         </EventDescription>
