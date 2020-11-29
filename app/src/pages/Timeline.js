@@ -127,7 +127,7 @@ const AgeBox = styled.div`
   justify-content: center;
   align-items: center;
   width: ${Theme.spacing.x1 * 9}px;
-  height: ${Theme.spacing.x1 * 7}px;
+  height: ${Theme.spacing.x1 * 5}px;
   white-space: nowrap;
   top: 0;
   left: ${Theme.spacing.x2}px;
@@ -135,7 +135,7 @@ const AgeBox = styled.div`
   background-color: ${({ isBorn }) => (isBorn ? "#e4dfd3" : "#2c2b28")};
   color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
   border: ${Theme.spacing.xs}px solid #f005;
-  border-radius: ${Theme.spacing.x1}px;
+  border-radius: ${Theme.spacing.x1 * 50}px;
   /* border-radius: 50%; */
   transform: translateY(-50%);
   transition: 0.5s all;
@@ -145,7 +145,7 @@ const AgeBox = styled.div`
 
 const Age = styled.div`
   font-weight: bold;
-  font-size: 30px;
+  font-size: ${20 * 1.25}px;
   margin-top: -4px;
 `;
 
@@ -158,7 +158,7 @@ const TimelineLine = styled.div`
   background-color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
 `
 
-const zoomExtent = [1, 5];
+const zoomExtent = [Config.minZoom, Config.minZoom + Config.maxZoomSteps * Config.zoomStep];
 
 const yearStartDisplay = Config.yearRangeMin - Config.yearsOffset;
 const yearEndDisplay = Config.yearRangeMax + Config.yearsOffset;
@@ -238,6 +238,18 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
         }
       }
     }
+
+    let yearList = eventsNestedTemp.map(g => g.year);
+    for (let yr = yearStartDisplay; yr <= yearEndDisplay; yr++) {
+      if (!yearList.includes(yr)) {
+        eventsNestedTemp.push({
+          year: yr,
+          events: []
+        })
+      }
+    }
+
+    eventsNestedTemp.sort((a, b) => a.year - b.year);
 
     console.log(eventsNestedTemp);
 
@@ -324,6 +336,7 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
     );
     let tempScaleY = tempTransform.rescaleY(scaleY);
 
+    // console.log('t', tempTransform);
     setTransform(tempTransform);
     setTransformedScaleY(() => tempScaleY);
   };
@@ -391,11 +404,11 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
           <AgeBox isBorn={yearAtRefLine >= birthYear}>
             {yearAtRefLine > birthYear ? (
               <div style={{textAlign: 'center'}}>
-                อายุ<Age>{yearAtRefLine - birthYear} ปี</Age>
+                <small>อายุ</small><Age>{yearAtRefLine - birthYear} ปี</Age>
               </div>
             ) : yearAtRefLine < birthYear ? (
               <div style={{textAlign: 'center'}}>
-                ก่อนเกิด<Age>{birthYear - yearAtRefLine} ปี</Age>
+                <small>ก่อนเกิด</small><Age>{birthYear - yearAtRefLine} ปี</Age>
               </div>
             ) : (
               `ปีแรกเกิด`
@@ -434,10 +447,10 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
             birthYear={birthYear}
             y={eventGroup.y}
             onDialogOpen={openDialog}
-            maxDisplay={transform.k}
+            zoomLevel={transform.k}
             smoothTransition={!isNormalizingTransform}
             key={`item${i}`}
-            onCollapsedClick={(e) => zoom(1, e.pageY)}
+            onCollapsedClick={(e) => zoom(Config.zoomStep, e.pageY)}
           />
         ))}
         <EventDialog
@@ -454,8 +467,8 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
           type={dialogData.type}
         />
         <ZoomControls>
-          <Button onClick={() => zoom(1)}>+</Button>
-          <Button onClick={() => zoom(-1)}>-</Button>
+          <Button onClick={() => zoom(Config.zoomStep)}>+</Button>
+          <Button onClick={() => zoom(-Config.zoomStep)}>-</Button>
         </ZoomControls>
       </TimelineContainer>
       <Dialog open={openYearChange} setOpen={setOpenYearChange}>

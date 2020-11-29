@@ -1,5 +1,13 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 
+const generations = {
+  2010: 'Generation Alpha',
+  1997: 'Generation Z',
+  1981: 'Generation Y',
+  1965: 'Generation X',
+  1946: 'Baby Boomer',
+}
+
 export const Utils = {
   typeYear: (yearAd, yearMode = "ad", text = false) =>
     (text ? (yearMode == "ad" ? "ค.ศ. " : "พ.ศ. ") : "") +
@@ -44,4 +52,10 @@ export default {
   yOffsetCollapsedEvents: 60,
   xSpacePerCollapsedEvent: 16,
   xOffsetCollapsedEvents: 20,
+  zoomStep: 0.7,
+  minZoom: 1,
+  maxZoomSteps: 3,
+  // zoomLevelsCount: 5,
+
+  generations,
 };

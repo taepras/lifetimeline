@@ -19,8 +19,8 @@ const handleColorType = (type) => {
 
 const StyledEvent = styled.div`
   display: flex;
-  width: 200px;
-  max-width: 200px;
+  width: calc(min(100vw, ${Theme.containerMaxWidth}px) - ${({x}) => x}px - ${Theme.spacing.x1 * 6}px);
+  max-width: calc(min(100vw, ${Theme.containerMaxWidth}px) - ${({x}) => x}px - ${Theme.spacing.x1 * 6}px);
   height: 64px;
   overflow: visible;
   align-items: center;
@@ -101,6 +101,7 @@ function EventBubble({
       relative={relative}
       style={{ transform: `translate(${x}px, ${y}px)` }}
       z={z}
+      x={x}
     >
       <EventThumbnail
         eventType={type}

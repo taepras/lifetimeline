@@ -1,4 +1,5 @@
 import { max } from "d3";
+import { useMemo } from "react";
 import styled from "styled-components";
 import Config, { Utils } from "../config/Config";
 import Theme from "../config/Theme";
@@ -19,13 +20,23 @@ const YearNumber = styled.div`
   transition: 0.5s all;
 `;
 
+const Tick = styled.div`
+  position: absolute;
+  top: 32px;
+  left: ${Theme.spacing.x1 * 4.5}px;
+  transform: translate(-50%, -50%);
+  background-color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
+  height: 1px;
+  width: 8px;
+`
+
 function YearGroup({
   year,
   y,
   yearMode,
   birthYear,
   data,
-  maxDisplay = 1,
+  zoomLevel = 1,
   className,
   children,
   style,
@@ -34,16 +45,21 @@ function YearGroup({
   onDialogOpen = (event) => {},
   onCollapsedClick = (event) => {},
 }) {
+
+  const maxDisplay = useMemo(() => {
+    return (zoomLevel - Config.minZoom) / Config.zoomStep + Config.minZoom
+  }, [zoomLevel])
+
   // console.log("events", data.year, data);
   const getBubbleYPosition = (index) =>
     index < maxDisplay
       ? index * Config.spacePerEvent
-      : (maxDisplay - 1) * Config.spacePerEvent + Config.yOffsetCollapsedEvents;
+      : Math.ceil(maxDisplay - 1) * Config.spacePerEvent + Config.yOffsetCollapsedEvents;
 
   const getBubbleXPosition = (index) =>
     index < maxDisplay
       ? 0
-      : (index - maxDisplay) * Config.xSpacePerCollapsedEvent;
+      : Math.floor(index - maxDisplay) * Config.xSpacePerCollapsedEvent;
 
   return (
     <StyledYearGroup
@@ -54,13 +70,21 @@ function YearGroup({
       }}
     >
       <YearNumber isBorn={isBorn}>
-        {Utils.typeYear(year, yearMode)} 
+        {Utils.typeYear(year, yearMode)}
       </YearNumber>
+      {[...Array(Math.max(Math.floor(maxDisplay - 1), 0))].map((d, i) => 
+        <Tick 
+          isBorn={isBorn}
+          style={{
+            // ...style,
+            transform: `translate(-50%, ${Config.spacePerEvent * (i + 1)}px)`,
+          }}/>
+      )}
       {/* | {+year - +birthYear} ปี */}
       {data.events.map((event, index) => (
         <EventBubble
           y={getBubbleYPosition(index)}
-          x={100 + getBubbleXPosition(index)}
+          x={Theme.bubbleXOffset + getBubbleXPosition(index)}
           title={event.type == "birthyear" ? event.name : event.event}
           type={event.type}
           image={event.image}

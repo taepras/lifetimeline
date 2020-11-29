@@ -34,7 +34,7 @@ function YearSelector({
         <option>เลือกปีเกิด</option>
         {yearRange.reverse().map((y, i) => (
           <option key={`select-${y}`} value={y}>
-            {Utils.typeYear(y, yearMode, true)}
+            {Utils.typeYear(y, yearMode, true)} {y in Config.generations && `(${Config.generations[y]})`}
           </option>
         ))}
       </Select>

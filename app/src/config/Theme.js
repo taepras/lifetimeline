@@ -1,7 +1,8 @@
 const BASE_UNIT = 8;
 
 export default {
-    containerMaxWidth: 600,
+    containerMaxWidth: 480,
+    bubbleXOffset: 100,
     spacing: {
         xxs: BASE_UNIT / 4,
         xs: BASE_UNIT / 2,
