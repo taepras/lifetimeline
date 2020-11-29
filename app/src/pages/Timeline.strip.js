@@ -23,7 +23,7 @@ import lifeData from "../data/life.csv";
 
 import { zoom } from "d3";
 
-import { usePinch, useDrag } from "react-use-gesture";
+import { usePinch, useDrag } from 'react-use-gesture'
 
 const TimelineContainer = styled(Container)`
 
@@ -158,12 +158,9 @@ const TimelineLine = styled.div`
   width: 1px;
 
   background-color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
-`;
+`
 
-const zoomExtent = [
-  Config.minZoom,
-  Config.minZoom + Config.maxZoomSteps * Config.zoomStep,
-];
+const zoomExtent = [Config.minZoom, Config.minZoom + Config.maxZoomSteps * Config.zoomStep];
 
 const yearStartDisplay = Config.yearRangeMin - Config.yearsOffset;
 const yearEndDisplay = Config.yearRangeMax + Config.yearsOffset;
@@ -223,26 +220,13 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
 
   const pinchBind = usePinch(
     (state) => {
-      console.log(state);
-      let d = state.da[0];
-      let delta = state.delta[0] + state.delta[1];
-      const scrollOffset =
-        document.body.scrollTop || document.documentElement.scrollTop;
-      let c = state.origin[0] + scrollOffset;
-      console.log(state.origin);
-      zoom(delta / d, c);
+      console.log(state)
     },
-    { 
-      domTarget: timelineRef, 
-      // filterTaps: false, 
-      eventOptions: { 
-        passive: false,
-        capture: true
-      } 
-    }
-  );
+    { domTarget: timelineRef, eventOptions: { passive: false } }
+  )
 
   // useEffect(pinchBind, [pinchBind])
+  
 
   const handleYearChange = (year) => {
     setOpenYearChange(false);
@@ -275,13 +259,13 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
       }
     }
 
-    let yearList = eventsNestedTemp.map((g) => g.year);
+    let yearList = eventsNestedTemp.map(g => g.year);
     for (let yr = yearStartDisplay; yr <= yearEndDisplay; yr++) {
       if (!yearList.includes(yr)) {
         eventsNestedTemp.push({
           year: yr,
-          events: [],
-        });
+          events: []
+        })
       }
     }
 
@@ -345,8 +329,6 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
   };
 
   const zoom = (dz, centerY = null) => {
-    console.log(dz, centerY);
-
     let tempZoomLevel = Utils.Clamp(
       transform.k + dz,
       zoomExtent[0],
@@ -404,10 +386,9 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
   }, []);
 
   // const onTouchMove = (e) => {
-  //   console.log('touch')
   //   if (e.touches.length > 1) {
   //     e.preventDefault();
-  //     e.stopImmediatePropagation();
+  //     e.nativeEvent.stopImmediatePropagation();
 
   //     if (lastDy === null) {
   //       setLastDy(e.touches[1].pageY - e.touches[0].pageY);
@@ -433,13 +414,10 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
   // };
 
   useEffect(() => {
-    console.log("!!!!");
-
-    // timelineRef.current.addEventListener('touchmove', onTouchMove, {passive: false})
-
-    document.addEventListener("gesturestart", (e) => e.preventDefault());
-    document.addEventListener("gesturechange", (e) => e.preventDefault());
-  }, []);
+    console.log('!!!!')
+    document.addEventListener('gesturestart', (e) => e.preventDefault())
+    document.addEventListener('gesturechange', (e) => e.preventDefault())
+  }, [])
 
   return (
     <>
@@ -448,14 +426,12 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
         <Container style={{ position: "relative" }}>
           <AgeBox isBorn={yearAtRefLine >= birthYear}>
             {yearAtRefLine > birthYear ? (
-              <div style={{ textAlign: "center" }}>
-                <small>อายุ</small>
-                <Age>{yearAtRefLine - birthYear} ปี</Age>
+              <div style={{textAlign: 'center'}}>
+                <small>อายุ</small><Age>{yearAtRefLine - birthYear} ปี</Age>
               </div>
             ) : yearAtRefLine < birthYear ? (
-              <div style={{ textAlign: "center" }}>
-                <small>ก่อนเกิด</small>
-                <Age>{birthYear - yearAtRefLine} ปี</Age>
+              <div style={{textAlign: 'center'}}>
+                <small>ก่อนเกิด</small><Age>{birthYear - yearAtRefLine} ปี</Age>
               </div>
             ) : (
               `ปีแรกเกิด`
@@ -465,12 +441,11 @@ function Timeline({ birthYear, yearMode, onYearChange = (year) => {} }) {
       </RefLineContainer>
       <TimelineContainer
         isBorn={yearAtRefLine >= birthYear}
-        style={{
+        style={{ 
           height: `${maxContainerHeight}px`,
-          position: "relative",
+          position: 'relative' 
         }}
         ref={timelineRef}
-        // onTouchMove={onTouchMove}
       >
         <TimelineLine isBorn={yearAtRefLine >= birthYear} />
         <Banner>

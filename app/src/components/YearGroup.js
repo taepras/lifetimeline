@@ -47,7 +47,7 @@ function YearGroup({
 }) {
 
   const maxDisplay = useMemo(() => {
-    return (zoomLevel - Config.minZoom) / Config.zoomStep + Config.minZoom
+    return Math.floor((zoomLevel - Config.minZoom) / Config.zoomStep) + Config.minZoom
   }, [zoomLevel])
 
   // console.log("events", data.year, data);
@@ -75,6 +75,7 @@ function YearGroup({
       {[...Array(Math.max(Math.floor(maxDisplay - 1), 0))].map((d, i) => 
         <Tick 
           isBorn={isBorn}
+          key={i}
           style={{
             // ...style,
             transform: `translate(-50%, ${Config.spacePerEvent * (i + 1)}px)`,

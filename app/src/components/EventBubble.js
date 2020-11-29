@@ -29,6 +29,8 @@ const StyledEvent = styled.div`
   z-index: ${({ z }) => z};
 
   transition: 0.3s all;
+
+  pointer-events: none;
 `;
 
 const EventThumbnail = styled.div`
@@ -37,7 +39,7 @@ const EventThumbnail = styled.div`
   height: 64px; //${({ collapsed }) => (collapsed ? "24px" : "64px")};
   ${({ collapsed }) => collapsed && `transform: scale(0.375);`}
   border-radius: ${({ eventType }) =>
-    eventType == "birthyear" ? "50%" : "8px"};
+    eventType === "birthyear" ? "50%" : "8px"};
   box-sizing: border-box;
   background-color: ${({ eventType }) =>
     lighten(0.2, handleColorType(eventType))};
@@ -63,7 +65,7 @@ const EventIcon = styled.div`
 
   background: ${({ eventType }) => handleColorType(eventType)};
   border-radius: ${({ eventType }) =>
-    eventType == "birthyear" ? "50%" : "8px 0px"};
+    eventType === "birthyear" ? "50%" : "8px 0px"};
   display: flex;
   justify-content: center;
   align-items: center;
