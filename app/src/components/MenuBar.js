@@ -16,6 +16,7 @@ const MenuItem = styled.div`
   padding-bottom: ${Theme.spacing.x2}px;
   color: #fff;
   margin-right: ${Theme.spacing.x2}px;
+  cursor: pointer;
 
   &:last-child {
     margin-right: 0;
@@ -30,6 +31,10 @@ const MenuItem = styled.div`
     font-weight: bold;
     text-decoration: none;
   }
+
+  &:hover {
+    ${({toggle}) => !toggle && `text-decoration: underline;`}
+  }
 `;
 
 function MenuBar({
@@ -38,6 +43,7 @@ function MenuBar({
   onYearModeChange = (mode) => {},
   onOpenAbout = () => {},
   onHome = () => {},
+  onToggleLegend = () => {}
 }) {
   const handleYearMode = (e, mode) => {
     e.preventDefault();
@@ -50,10 +56,10 @@ function MenuBar({
       <Container fillHeight style={{ display: "flex", alignItems: "flex-end" }}>
         {mode != "home" && (
           <>
-            <MenuItem onClick={onHome}>Home</MenuItem>
+            <MenuItem onClick={onHome}><i className="fa fa-home" /></MenuItem>
           </>
         )}
-        <MenuItem>
+        <MenuItem toggle>
           <a
             href="#"
             onClick={(e) => {
@@ -78,7 +84,7 @@ function MenuBar({
         {mode != "home" && (
           <>
             <MenuItem>วิธีเล่น</MenuItem>
-            <MenuItem>สัญลักษณ์</MenuItem>
+            <MenuItem onClick={onToggleLegend}>สัญลักษณ์</MenuItem>
           </>
         )}
         <MenuItem onClick={onOpenAbout}>About</MenuItem>

@@ -12,7 +12,7 @@ const StyledYearGroup = styled.div`
 const YearNumber = styled.div`
   position: absolute;
   top:32px;
-  left: ${Theme.spacing.x1 * 4.5}px;
+  left: ${Theme.spacing.x1 * 5}px;
   transform: translate(-50%, -50%);
   text-align: center;
   padding: ${Theme.spacing.xs}px;
@@ -23,7 +23,7 @@ const YearNumber = styled.div`
 const Tick = styled.div`
   position: absolute;
   top: 32px;
-  left: ${Theme.spacing.x1 * 4.5}px;
+  left: ${Theme.spacing.x1 * 5}px;
   transform: translate(-50%, -50%);
   background-color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
   height: 1px;
@@ -47,7 +47,7 @@ function YearGroup({
 }) {
 
   const maxDisplay = useMemo(() => {
-    return Math.floor((zoomLevel - Config.minZoom) / Config.zoomStep) + Config.minZoom
+    return Math.floor((zoomLevel - Config.minZoom) / Config.zoomStep + 0.1) + Config.minZoom
   }, [zoomLevel])
 
   // console.log("events", data.year, data);

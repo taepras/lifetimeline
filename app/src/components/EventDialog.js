@@ -65,6 +65,7 @@ const StyledEventDialog = styled.div`
 const EventThumbnail = styled.div`
   width: 100%;
   height: 240px;
+  margin: auto;
 
   border-radius: 8px;
   box-sizing: border-box;
@@ -78,6 +79,15 @@ const EventThumbnail = styled.div`
     ${({ eventType }) => darken(0.1, handleColorType(eventType))};
 
   position: relative;
+
+  ${({ eventType }) =>
+    eventType == "birthyear" &&
+    `
+    width: 224px;
+    height: 224px;
+    border-radius: 50%;
+    margin: 16px auto 0;
+  `}
 `;
 
 const EventIcon = styled.div`
@@ -89,8 +99,7 @@ const EventIcon = styled.div`
   padding: 0 ${Theme.spacing.x1}px;
 
   background: ${({ eventType }) => darken(0.1, handleColorType(eventType))};
-  border-radius: ${({ eventType }) =>
-    eventType == "birthyear" ? "50%" : "8px 0px"};
+  border-radius: 8px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,6 +154,7 @@ function EventDialog({
   image,
   onClick = () => {},
   onClose = () => {},
+  onBirthYearChange = (year) => {}
 }) {
   const getTypeLabel = (type) => {
     switch (type) {
@@ -178,15 +188,36 @@ function EventDialog({
           ×
         </CloseButton>
         <EventThumbnail
-          style={{ backgroundImage: `url(/img/events/${image})` }}
+          style={{
+            backgroundImage: `url(/img/${
+              data.type == "birthyear" ? "celebs" : "events"
+            }/${image})`,
+          }}
           eventType={type}
         >
-          <EventIcon eventType={type}>⬤ {getTypeLabel(data.type)}</EventIcon>
+          <EventIcon eventType={type}>
+            {type == "world" ? (
+              <i
+                className="fa fa-globe-americas"
+                style={{ marginRight: "8px" }}
+              />
+            ) : type == "birthyear" ? (
+              <i className="fa fa-baby" style={{ marginRight: "8px" }} />
+            ) : (
+              <img
+                src="/img/icon_th.png"
+                alt="thailand"
+                style={{ marginRight: "8px" }}
+              />
+            )}
+            {getTypeLabel(data.type)}
+          </EventIcon>
         </EventThumbnail>
         <EventDescription eventType={type}>
           <h2>{data.type == "birthyear" ? data.name : data.event}</h2>
           <p>
-            {Utils.typeYear(year, yearMode, true)} {data.type == "birthyear" &&
+            {Utils.typeYear(year, yearMode, true)}{" "}
+            {data.type == "birthyear" &&
               `- ปีนี้อายุ ${new Date().getFullYear() - year} ปี`}
             <br />
             {data.type != "birthyear" && (
@@ -198,9 +229,19 @@ function EventDialog({
               </>
             )}
           </p>
-          <Button className="mt-1" block outlined>
-            อ่านเพิ่มเติมเกี่ยวกับเหตุการณ์นี้
-          </Button>
+          {data.type != "birthyear" ? (
+            data.link &&
+            <Button as="a" href={data.link} target="_blank" className="mt-1" block outlined style={{width: 'auto'}}>
+              อ่านเพิ่มเติมเกี่ยวกับเหตุการณ์นี้
+            </Button>
+          ) : (
+            <Button className="mt-1" block outlined onClick={() => {
+              onBirthYearChange(data.year);
+              setOpen(false);
+            }}>
+              ลองมองโลกผ่านมุมมองของ "เด็กสมัย {data.year}"
+            </Button>
+          )}
         </EventDescription>
       </StyledEventDialog>
     </FadeOverlay>

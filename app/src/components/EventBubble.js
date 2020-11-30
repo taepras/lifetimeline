@@ -17,22 +17,6 @@ const handleColorType = (type) => {
   }
 };
 
-const StyledEvent = styled.div`
-  display: flex;
-  width: calc(min(100vw, ${Theme.containerMaxWidth}px) - ${({x}) => x}px - ${Theme.spacing.x1 * 6}px);
-  max-width: calc(min(100vw, ${Theme.containerMaxWidth}px) - ${({x}) => x}px - ${Theme.spacing.x1 * 6}px);
-  height: 64px;
-  overflow: visible;
-  align-items: center;
-  transform: translateY(-50%);
-  position: ${({ relative }) => (relative ? "relative" : "absolute")};
-  z-index: ${({ z }) => z};
-
-  transition: 0.3s all;
-
-  pointer-events: none;
-`;
-
 const EventThumbnail = styled.div`
   width: 64px; //${({ collapsed }) => (collapsed ? "24px" : "64px")};
   flex: 0 0 64px; //${({ collapsed }) => (collapsed ? "24px" : "64px")};
@@ -53,7 +37,35 @@ const EventThumbnail = styled.div`
   box-shadow: 0px 2px 4px
     ${({ eventType }) => darken(0.3, handleColorType(eventType))}44;
 
-  transition: 0.3s transform;
+  transition: 0.3s transform, 0.2s box-shadow;
+`;
+
+const StyledEvent = styled.div`
+  display: flex;
+  width: calc(
+    min(100vw, ${Theme.containerMaxWidth}px) - ${({ x }) => x}px -
+      ${Theme.spacing.x1 * 6}px
+  );
+  max-width: calc(
+    min(100vw, ${Theme.containerMaxWidth}px) - ${({ x }) => x}px -
+      ${Theme.spacing.x1 * 6}px
+  );
+  height: 64px;
+  overflow: visible;
+  align-items: center;
+  transform: translateY(-50%);
+  position: ${({ relative }) => (relative ? "relative" : "absolute")};
+  z-index: ${({ z }) => z};
+
+  transition: 0.3s all;
+
+  &:hover {
+    ${EventThumbnail} {
+      /* transform: translateY(-2px); */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+  }
+  /* pointer-events: none; */
 `;
 
 const EventIcon = styled.div`
@@ -62,6 +74,8 @@ const EventIcon = styled.div`
   bottom: -${borderWidth}px;
   width: 24px;
   height: 24px;
+  color: #fff;
+  font-size: 16px;
 
   background: ${({ eventType }) => handleColorType(eventType)};
   border-radius: ${({ eventType }) =>
@@ -70,14 +84,14 @@ const EventIcon = styled.div`
   justify-content: center;
   align-items: center;
 
-  &::after {
+  /* &::after {
     content: " ";
     display: block;
     width: 16px;
     height: 16px;
     background-color: #fff;
     border-radius: 50%;
-  }
+  } */
 `;
 
 const EventDescription = styled.div``;
@@ -92,7 +106,7 @@ function EventBubble({
   z,
   relative,
   collapsed = false,
-  onCollapsedClick = () => {}
+  onCollapsedClick = () => {},
 }) {
   return (
     <StyledEvent
@@ -107,10 +121,20 @@ function EventBubble({
     >
       <EventThumbnail
         eventType={type}
-        style={{ backgroundImage: `url(/img/events/${image})` }}
+        style={{ backgroundImage: `url(/img/${type  == 'birthyear' ? 'celebs' : 'events'}/${image})` }}
         collapsed={collapsed}
       >
-        {!collapsed && <EventIcon eventType={type}></EventIcon>}
+        {!collapsed && (
+          <EventIcon eventType={type}>
+            {type == "world" ? (
+              <i className="fa fa-globe-americas"></i>
+            ) : type == "birthyear" ? (
+              <i className="fa fa-baby"></i>
+            ) : (
+              <img src="/img/icon_th.png" alt="thailand"/>
+            )}
+          </EventIcon>
+        )}
       </EventThumbnail>
       {!collapsed && (
         <EventDescription eventType={type}>
