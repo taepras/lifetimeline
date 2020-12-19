@@ -16,7 +16,7 @@ const YearNumber = styled.div`
   transform: translate(-50%, -50%);
   text-align: center;
   padding: ${Theme.spacing.xs}px;
-  background-color: ${({ isBorn }) => (isBorn ? "#DED8C9" : "#161514")};
+  background-color: #DED8C9; //${({ isBorn }) => (isBorn ? "#DED8C9" : "#161514")};
   transition: 0.5s all;
 `;
 
@@ -25,7 +25,7 @@ const Tick = styled.div`
   top: 32px;
   left: ${Theme.spacing.x1 * 5}px;
   transform: translate(-50%, -50%);
-  background-color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
+  background-color: #333; //${({ isBorn }) => (isBorn ? "#333" : "#fff")};
   height: 1px;
   width: 8px;
 `

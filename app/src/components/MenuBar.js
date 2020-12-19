@@ -9,7 +9,7 @@ const StyledMenuBar = styled.div`
   right: 0;
   height: 80px;
   background: linear-gradient(180deg, #38353100 0%, #383531ff 100%);
-  z-index: 100;
+  z-index: 200;
 `;
 
 const MenuItem = styled.div`

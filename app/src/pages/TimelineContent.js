@@ -22,16 +22,16 @@ import { zoom } from "d3";
 import { usePinch, useDrag } from "react-use-gesture";
 
 const TimelineContainer = styled(Container)`
-
-  color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};;
+  color: #333; //${({ isBorn }) => (isBorn ? "#333" : "#fff")};;
   transition: 0.5s all;
 
-  background-color: #DED8C9;
+  background-color: #ded8c9;
 
   &::before {
     content: " ";
-    background-color: ${({ isBorn }) => (isBorn ? "#DED8C9" : "#161514")};
-    color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
+    background-color: #ded8c9; //${({ isBorn }) =>
+      isBorn ? "#DED8C9" : "#161514"};
+    color: #333; //${({ isBorn }) => (isBorn ? "#333" : "#fff")};
     position: fixed;
     top: 0;
     left: 0;
@@ -41,10 +41,16 @@ const TimelineContainer = styled(Container)`
     z-index: 0;
     transition: 0.5s all;
   }
-  
+
   &::after {
     content: " ";
-    background: 
+    background: radial-gradient(
+      100% 60% at 50% 45%,
+      rgba(85, 80, 72, 0) 30%,
+      rgba(85, 80, 72, 0.57) 85%,
+      rgba(85, 80, 72, 0.75) 100%
+    );
+    /* background: 
     ${({ isBorn }) =>
       isBorn
         ? `radial-gradient(
@@ -58,7 +64,7 @@ const TimelineContainer = styled(Container)`
         rgba(0, 0, 0, 0) 30%, 
         rgba(0, 0, 0, 0.57) 85%, 
         rgba(0, 0, 0, 0.75) 100%
-      );`}
+      );`} */
     position: fixed;
     top: 0;
     left: 0;
@@ -74,15 +80,12 @@ const TimelineContainer = styled(Container)`
 const ZoomControls = styled.div`
   position: fixed;
   /* right: ${Theme.spacing.x2}px; */
-  right: max(
-    ${Theme.spacing.x2}px,
-    (100vw - ${Theme.containerMaxWidth}px) / 2
-  );
+  right: max(${Theme.spacing.x2}px, (100vw - ${Theme.containerMaxWidth}px) / 2);
   bottom: 80px;
   display: flex;
   gap: 8px;
   flex-direction: column;
-  z-index: 1;
+  z-index: 110;
 
   ${Button} {
     font-size: 18px;
@@ -99,13 +102,28 @@ const ZoomControls = styled.div`
   }
 `;
 
+const EndPrompt = styled.div`
+  position: absolute;
+  /* left: 100px; */
+  width: calc(
+    min(100vw, ${Theme.containerMaxWidth}px) - ${({ x }) => x}px -
+      ${Theme.spacing.x1 * 6}px
+  );
+  background-color: #ece8e3;
+  padding: ${Theme.spacing.x2}px;
+  border-radius: ${Theme.spacing.xs}px;
+  box-sizing: border-box;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+`;
+
 const TimelineLine = styled.div`
   position: absolute;
   left: ${Theme.spacing.x2 + Theme.spacing.x1 * 5}px;
   height: 100%;
   width: 1px;
 
-  background-color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
+  background-color: #333; //${({ isBorn }) => (isBorn ? "#333" : "#fff")};
 `;
 
 const zoomExtent = [
@@ -138,9 +156,10 @@ function TimelineContent({
   onClick = (event) => {},
   onWheel = (event) => {},
   onTouchStart = (event) => {},
-  refLineYOffset = 0
+  setOpenYearChange = () => {},
+  refLineYOffset = 0,
 }) {
-  const [openYearChange, setOpenYearChange] = useState(false);
+  // const [openYearChange, setOpenYearChange] = useState(false);
   const [eventsNested, _setEventsNested] = useStateWithPromise([]);
 
   const [transform, setTransform] = useStateWithPromise(d3.zoomIdentity);
@@ -155,20 +174,32 @@ function TimelineContent({
 
   const [yearAtRefLine, setYearAtRefLine] = useState(0);
 
+  const scrollRangeYear = useMemo(() => {
+    return [birthYear - Config.yearsOffset, yearEndDisplay];
+  }, [birthYear]);
+
   // const [lastDy, setLastDy] = useState(null);
 
   const scrollRange = useMemo(() => {
     let x = [
-      transformedScaleY(yearStartDisplay),
-      transformedScaleY(yearEndDisplay),
+      transformedScaleY(scrollRangeYear[0]) - refLineYOffset,
+      transformedScaleY(scrollRangeYear[1]) - refLineYOffset,
     ];
     return x;
-  }, [transformedScaleY]);
+  }, [transformedScaleY, scrollRangeYear]);
 
   const [currentScrollListener, setCurrentScrollListener] = useState(null);
 
   // const refLineEl = useRef(null);
   const timelineRef = useRef(null);
+
+  const eventsNestedFiltered = useMemo(() => {
+    return eventsNested.filter((e) => e.year >= birthYear);
+  }, [eventsNested, birthYear]);
+
+  const endPromptY = useMemo(() => {
+    return transformedScaleY(Config.yearRangeMax + 1)
+  }, [transformedScaleY]);
 
   // const pinchBind = usePinch(
   //   (state) => {
@@ -208,18 +239,18 @@ function TimelineContent({
       d.celebrities = [];
     });
 
-    for (let i in eventsNestedTemp) {
-      let x = -1;
-      for (let j in celebrities) {
-        if (+celebrities[j].year == +eventsNestedTemp[i].year) {
-          celebrities[j].type = "birthyear";
-          eventsNestedTemp[i].events.push(celebrities[j]);
-        }
-      }
-    }
+    // for (let i in eventsNestedTemp) {
+    //   let x = -1;
+    //   for (let j in celebrities) {
+    //     if (+celebrities[j].year == +eventsNestedTemp[i].year) {
+    //       celebrities[j].type = "birthyear";
+    //       eventsNestedTemp[i].events.push(celebrities[j]);
+    //     }
+    //   }
+    // }
 
     let yearList = eventsNestedTemp.map((g) => g.year);
-    for (let yr = yearStartDisplay; yr <= yearEndDisplay; yr++) {
+    for (let yr = Config.yearRangeMin; yr <= Config.yearRangeMax; yr++) {
       if (!yearList.includes(yr)) {
         eventsNestedTemp.push({
           year: yr,
@@ -257,8 +288,8 @@ function TimelineContent({
       setYearAtRefLine(Math.floor(transformedScaleY.invert(offsetY)));
       onScroll({
         event: e,
-        currentYear: Math.floor(transformedScaleY.invert(offsetY))
-      })
+        currentYear: Math.floor(transformedScaleY.invert(offsetY)),
+      });
     };
     setCurrentScrollListener(() => handleScroll);
     window.addEventListener("scroll", handleScroll, { passive: false });
@@ -323,17 +354,17 @@ function TimelineContent({
 
     Promise.all([
       setTransform(tempTransform),
-      setTransformedScaleY(() => tempScaleY)
+      setTransformedScaleY(() => tempScaleY),
     ]).then(() => {
       scrollToYear(birthYear);
-    })
-  }
+    });
+  };
 
   const scrollToYear = (year, scale) => {
     let scaledYear = scale ? scale(year) : transformedScaleY(year);
     let scrollY = scaledYear - refLineYOffset + 32;
     // console.log(scaledYear, refLineYOffset);
-    window.scrollTo({ top: scrollY, behavior: 'smooth' });
+    window.scrollTo({ top: scrollY, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -357,7 +388,7 @@ function TimelineContent({
   }, []);
 
   useEffect(() => {
-    scrollToYear(birthYear)
+    scrollToYear(birthYear);
   }, [birthYear]);
 
   return (
@@ -373,7 +404,7 @@ function TimelineContent({
       onWheel={onWheel}
     >
       <TimelineLine isBorn={yearAtRefLine >= birthYear} />
-      {eventsNested.map((eventGroup, i) => (
+      {eventsNestedFiltered.map((eventGroup, i) => (
         <YearGroup
           year={eventGroup.year}
           data={eventGroup}
@@ -388,10 +419,24 @@ function TimelineContent({
           onCollapsedClick={(e) => zoom(Config.zoomStep, e.pageY)}
         />
       ))}
+
+      <EndPrompt 
+        style={{ transform: `translate(${Theme.bubbleXOffset}px, ${endPromptY}px)` }}
+        x={Theme.bubbleXOffset}>
+        <p style={{ marginBottom: Theme.spacing.x1 }}>ลองดูของคนอื่น</p>
+        <Button onClick={() => setOpenYearChange(true)}>เปลี่ยนปีเกิด</Button>
+      </EndPrompt>
+
       <ZoomControls>
-        <Button onClick={() => zoom(Config.zoomStep)}><i className="fa fa-search-plus"/></Button>
-        <Button onClick={() => zoom(-Config.zoomStep)}><i className="fa fa-search-minus"/></Button>
-        <Button onClick={resetView}><i className="fa fa-undo-alt"/></Button>
+        <Button onClick={() => zoom(Config.zoomStep)}>
+          <i className="fa fa-search-plus" />
+        </Button>
+        <Button onClick={() => zoom(-Config.zoomStep)}>
+          <i className="fa fa-search-minus" />
+        </Button>
+        <Button onClick={resetView}>
+          <i className="fa fa-undo-alt" />
+        </Button>
       </ZoomControls>
     </TimelineContainer>
   );

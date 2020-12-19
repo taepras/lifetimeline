@@ -27,15 +27,15 @@ const GlobalStyle = createGlobalStyle`
         `radial-gradient(
           100% 60% at 50% 45%, 
           rgba(85, 80, 72, 0) 30%, 
-          rgba(85, 80, 72, 0.4) 85%, 
-          rgba(85, 80, 72, 0.6) 100%
+          rgba(85, 80, 72, 0.2) 85%, 
+          rgba(85, 80, 72, 0.4) 100%
         );`
         :
         `radial-gradient(
           100% 60% at 50% 45%, 
           rgba(0, 0, 0, 0) 30%, 
-          rgba(0, 0, 0, 0.4) 85%, 
-          rgba(0, 0, 0, 0.6) 100%
+          rgba(0, 0, 0, 0.2) 85%, 
+          rgba(0, 0, 0, 0.4) 100%
         );`
       )}
       position: fixed;

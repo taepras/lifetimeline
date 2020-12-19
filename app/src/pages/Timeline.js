@@ -36,7 +36,7 @@ const Banner = styled.div`
   background: #ece8e3;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
   border-radius: 0px 0px 8px 8px;
-  z-index: 100;
+  z-index: 190;
   color: #333;
 
   /* right: calc(
@@ -91,15 +91,16 @@ const AgeBox = styled.div`
   justify-content: center;
   align-items: center;
   width: ${Theme.spacing.x1 * 9}px;
-  height: ${Theme.spacing.x1 * 4}px;
+  /* height: ${Theme.spacing.x1 * 8}px; */
   white-space: nowrap;
   top: 0;
   left: ${Theme.spacing.x2}px;
   /* padding: 4px 8px; */
-  background-color: ${({ isBorn }) => (isBorn ? "#e4dfd3" : "#2c2b28")};
-  color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
+  background-color: #e4dfd3; //${({ isBorn }) =>
+    isBorn ? "#e4dfd3" : "#2c2b28"};
+  color: #333; //${({ isBorn }) => (isBorn ? "#333" : "#fff")};
   border: ${Theme.spacing.xs}px solid #f005;
-  border-radius: ${Theme.spacing.x1 * 50}px;
+  border-radius: ${Theme.spacing.x1 * 2}px;
   /* border-radius: 50%; */
   transform: translateY(-50%);
   transition: 0.5s all;
@@ -115,10 +116,22 @@ const AgeBox = styled.div`
   /* width: 50px; */
 `;
 
+const AgeIcon = styled.div`
+  text-align: center;
+  background-color: #f005;
+  border-top-right-radius: ${Theme.spacing.x1 * 1.5}px;
+  border-top-left-radius: ${Theme.spacing.x1 * 1.5}px;
+  padding: ${Theme.spacing.xs}px;
+  margin-top: ${Theme.spacing.xs}px;
+  color: #fff;
+`;
+
 const Age = styled.div`
   font-weight: bold;
   font-size: ${20 * 1.25}px;
   margin-top: -4px;
+  width: 100%;
+  text-align: center;
 `;
 
 const AgeInfo = styled.div`
@@ -127,7 +140,8 @@ const AgeInfo = styled.div`
   top: -28px;
   height: 24px;
   padding: 0 8px;
-  background-color: ${({ isBorn }) => (isBorn ? "#DDD7C8" : "#161514")};
+  background-color: #ddd7c8; //${({ isBorn }) =>
+    isBorn ? "#DDD7C8" : "#161514"};
   border-radius: 4px;
 `;
 
@@ -137,7 +151,7 @@ const TimelineLine = styled.div`
   height: 100%;
   width: 1px;
 
-  background-color: ${({ isBorn }) => (isBorn ? "#333" : "#fff")};
+  background-color: #333; //${({ isBorn }) => (isBorn ? "#333" : "#fff")};
 `;
 
 const zoomExtent = [
@@ -161,14 +175,14 @@ const scaleY = d3Scale
   .domain([yearStartDisplay, yearEndDisplay])
   .range([maxZoomOffset, maxZoomOffset + timelineMinLength]);
 
-function Timeline({ 
-  birthYear, 
-  setBirthYear = (year) =>{}, 
-  yearMode, 
+function Timeline({
+  birthYear,
+  setBirthYear = (year) => {},
+  yearMode,
   onYearChange = (year) => {},
   onScroll = (event) => {},
   onTouchStart = (event) => {},
-  onWheel = (event) => {}
+  onWheel = (event) => {},
 }) {
   const [isDialogOpen, setDialogOpen] = useState(false);
 
@@ -188,7 +202,7 @@ function Timeline({
 
   useEffect(() => {
     handleYearChange(birthYear);
-  }, [birthYear])
+  }, [birthYear]);
 
   const openDialog = (event) => {
     setDialogData(event);
@@ -202,7 +216,18 @@ function Timeline({
 
   const refLineYOffset = useMemo(() => {
     return window.innerHeight / 2;
-  }, []) 
+  }, []);
+
+  const iconAtAge = useMemo(() => {
+    const age = Math.min(Config.yearRangeMax, yearAtRefLine) - birthYear;
+    if (age < 6) return "fas fa-baby";
+    if (age < 12) return "fas fa-child";
+    if (age < 22) return "fas fa-pencil-ruler";
+    if (age < 28) return "fas fa-user-graduate";
+    if (age < 40) return "fas fa-briefcase";
+    if (age < 60) return "fas fa-briefcase";
+    else return "fas fa-hiking";
+  }, [yearAtRefLine]);
 
   return (
     <>
@@ -214,14 +239,15 @@ function Timeline({
               <>
                 <AgeInfo isBorn={yearAtRefLine >= birthYear}>อายุ</AgeInfo>
                 <Age>
-                  {yearAtRefLine - birthYear}{" "}
-                  {yearAtRefLine - birthYear > 10 ? "ปี" : "ขวบ"}
+                  <AgeIcon>
+                    <i className={iconAtAge} />
+                  </AgeIcon>
+                  {Math.min(Config.yearRangeMax, yearAtRefLine) - birthYear}{" "}
+                  {Math.min(Config.yearRangeMax, yearAtRefLine) - birthYear >=
+                  10
+                    ? "ปี"
+                    : "ขวบ"}
                 </Age>
-              </>
-            ) : yearAtRefLine < birthYear ? (
-              <>
-                <AgeInfo isBorn={yearAtRefLine >= birthYear}>ก่อนเกิด</AgeInfo>
-                <Age>{birthYear - yearAtRefLine} ปี</Age>
               </>
             ) : (
               <>ปีแรกเกิด</>
@@ -249,6 +275,7 @@ function Timeline({
         onScroll={updateScrollPosition}
         onWheel={onWheel}
         onTouchStart={onTouchStart}
+        setOpenYearChange={setOpenYearChange}
         // onYearChange={() => setOpenYearChange(true)}
       />
       <EventDialog
@@ -270,8 +297,6 @@ function Timeline({
         <h2>เปลี่ยนปีเกิด</h2>
         <YearSelector onSubmit={setBirthYear} yearMode={yearMode} />
       </Dialog>
-
-      
     </>
   );
 }

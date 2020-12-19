@@ -35,7 +35,7 @@ const BottomDrawer = styled.div`
   max-width: ${Theme.containerMaxWidth}px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  z-index: 50;
+  z-index: 200;
   display: flex;
   gap: 64px;
   padding: 16px;
