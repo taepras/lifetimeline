@@ -73,16 +73,17 @@ const Tutorial = styled.div`
 `
 
 const verticalSwipe = keyframes`
-  0%  { opacity: 0;  transform: translateY(-40px); }
-  10% { opacity: 1;  transform: translateY(-40px); }
-  15% { opacity: 1;  transform: translateY(-40px); }
-  30% { opacity: 0.3;  transform: translateY( 40px); }
-  40% { opacity: 0;  transform: translateY( 40px); }
-  50% { opacity: 0;  transform: translateY( 40px); }
-  60% { opacity: 1;  transform: translateY( 40px); }
-  65% { opacity: 1;  transform: translateY( 40px); }
-  80% { opacity: 0.3;  transform: translateY(-40px); }
-  90% { opacity: 0;  transform: translateY(-40px); }
+  /* 0%  { opacity: 0;  transform: translateY(-40px); }
+  20% { opacity: 1;  transform: translateY(-40px); }
+  30% { opacity: 1;  transform: translateY(-40px); }
+  60% { opacity: 0.3;  transform: translateY( 40px); }
+  80% { opacity: 0;  transform: translateY( 40px); }
+  100% { opacity: 0;  transform: translateY( 40px); } */
+  0% { opacity: 0;  transform: translateY( 40px); }
+  20% { opacity: 1;  transform: translateY( 40px); }
+  30% { opacity: 1;  transform: translateY( 40px); }
+  60% { opacity: 0.3;  transform: translateY(-40px); }
+  80% { opacity: 0;  transform: translateY(-40px); }
   100%{ opacity: 0;  transform: translateY(-40px); }
 `;
 
@@ -106,8 +107,12 @@ function App() {
   const [openLegend, setOpenLegend] = useState(false);
   const [touchInitiated, setTouchInitiated] = useState(false);
 
+  const [playThroughCount, setPlayThroughCount] = useState(0);
+
   const startTimeline = (year) => {
     console.log("start transtiion");
+    if (year != birthYear)
+      setPlayThroughCount(playThroughCount + 1)
     setBirthYear(year);
     setTransitioning(false);
     setTimeout(() => {
@@ -136,6 +141,8 @@ function App() {
           openLegend={openLegend}
           onTouchStart={() => setTouchInitiated(true)}
           onWheel={() => setTouchInitiated(true)}
+          playThroughCount={playThroughCount}
+          setPlayThroughCount={setPlayThroughCount}
         />
       )}
 

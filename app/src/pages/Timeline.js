@@ -183,6 +183,8 @@ function Timeline({
   onScroll = (event) => {},
   onTouchStart = (event) => {},
   onWheel = (event) => {},
+  playThroughCount = 0,
+  setPlayThroughCount = (v) => {}
 }) {
   const [isDialogOpen, setDialogOpen] = useState(false);
 
@@ -250,7 +252,16 @@ function Timeline({
                 </Age>
               </>
             ) : (
-              <>ปีแรกเกิด</>
+              <>
+                <Age>
+                  <AgeIcon>
+                    <i className={iconAtAge} />
+                  </AgeIcon>
+                  <div style={{fontSize: '20px'}}>
+                  ปีแรกเกิด
+                  </div>
+                </Age>
+              </>
             )}
           </AgeBox>
         </Container>
@@ -276,7 +287,8 @@ function Timeline({
         onWheel={onWheel}
         onTouchStart={onTouchStart}
         setOpenYearChange={setOpenYearChange}
-        // onYearChange={() => setOpenYearChange(true)}
+        playThroughCount={playThroughCount}
+        setPlayThroughCount={setPlayThroughCount}
       />
       <EventDialog
         open={isDialogOpen}

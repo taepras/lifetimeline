@@ -158,6 +158,8 @@ function TimelineContent({
   onTouchStart = (event) => {},
   setOpenYearChange = () => {},
   refLineYOffset = 0,
+  playThroughCount = 0,
+  setPlayThroughCount = (v) => {}
 }) {
   // const [openYearChange, setOpenYearChange] = useState(false);
   const [eventsNested, _setEventsNested] = useStateWithPromise([]);
@@ -423,7 +425,14 @@ function TimelineContent({
       <EndPrompt 
         style={{ transform: `translate(${Theme.bubbleXOffset}px, ${endPromptY}px)` }}
         x={Theme.bubbleXOffset}>
-        <p style={{ marginBottom: Theme.spacing.x1 }}>ลองดูของคนอื่น</p>
+        <p style={{ marginBottom: Theme.spacing.x1 }}>
+          {playThroughCount <= 1 && <>
+            แล้วคนรอบตัวคุณล่ะ เป็นเด็กสมัยไหน? ลองเปลี่ยนเป็นปีเกิดของพวกเขาดูกัน
+          </>}
+          {playThroughCount > 1 && <>
+            แล้วเด็กสมัยอื่นๆ เขาโตมายังไง? ลองย้อนดูชีวิตของคนในวัยอื่นๆ กัน
+          </>}
+        </p>
         <Button onClick={() => setOpenYearChange(true)}>เปลี่ยนปีเกิด</Button>
       </EndPrompt>
 
